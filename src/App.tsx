@@ -1,12 +1,16 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import ContactForm from './components/Mailer/ContactForm';
+import SignIn from './components/Auth/SignIn';
+import SignUp from './components/Auth/SignUp';
+import AuthDetails from './components/Auth/AuthDetails';
 
 function App() {
   return (
     <div className="App">
-      <ContactForm/>
+      <SignIn/>
+      <SignUp/>
+      <AuthDetails/>
     </div>
   );
 }
