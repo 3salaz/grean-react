@@ -17,6 +17,7 @@ function ContactForm() {
     
     return (
       <form ref={form} onSubmit={sendEmail}>
+        <h2>Contact Us!</h2>
         <label>Name</label>
         <input type="text" name="user_name" />
         <label>Email</label>
