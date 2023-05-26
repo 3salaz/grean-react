@@ -1,17 +1,11 @@
-import React from 'react';
 import './App.css';
-import SignIn from './components/Auth/SignIn';
-import SignUp from './components/Auth/SignUp';
-import AuthDetails from './components/Auth/AuthDetails';
-import ContactForm from './components/Mailer/ContactForm';
+import Navbar from './components/Navbar';
+// import LoginForm from './components/Forms/LoginForm';
 
 function App() {
   return (
-    <div className="App">
-      <SignIn/>
-      <SignUp/>
-      <AuthDetails/>
-      <ContactForm/>
+    <div className='bg-[#75B657] h-screen w-full'>
+      <Navbar/>
     </div>
   );
 }

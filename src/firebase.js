@@ -1,5 +1,6 @@
 import {initializeApp} from "firebase/app";
 import {getAuth} from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 let firebaseConfig = {
@@ -15,3 +16,23 @@ let firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+export const firestore = getFirestore(app);
+export const createUserDocument = async (user, additionData) => {
+  if(!user) return;
+  const userRef = firestore.doc(`users/${user.uid}`);
+  const snapshot = await userRef.get()
+  if (!snapshot.exists) {
+    const {email} = user;
+    const {userName} = additionData;
+
+    try{
+      userRef.set({
+        userName,
+        email,
+        createdAt: new Date(),
+      })
+    } catch(error){
+      console.log(error);
+    }
+  }
+}

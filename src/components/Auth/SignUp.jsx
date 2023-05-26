@@ -1,15 +1,16 @@
 import React, {useState} from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import {auth} from "../../firebase";
+import {auth, createUserDocument} from "../../firebase";
 
 function SignUp() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const SignUp = (e) => {
         e.preventDefault();
-        createUserWithEmailAndPassword(auth, email, password)
+        const {user} = createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 console.log(userCredential);
+                createUserDocument(user, {userName} );
             })
             .catch((error) => {
                 console.log(error);
