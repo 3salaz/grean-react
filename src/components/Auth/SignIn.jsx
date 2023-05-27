@@ -68,7 +68,6 @@ function SignIn() {
           <div className="mt-2">
             <input
               onChange={(e) => setPassword(e.target.value)}
-              id="password"
               value={password}
               name="password"
               type="password"

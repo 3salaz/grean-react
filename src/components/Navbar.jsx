@@ -1,4 +1,5 @@
 import React from "react";
+import logo from '../logo.png';
 
 function Navbar() {
   return (
@@ -57,13 +58,13 @@ function Navbar() {
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
             <div className="flex flex-shrink-0 items-center">
               <img
-                className="block h-8 w-auto lg:hidden"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                className="block h-8 w-auto lg:hidden rounded-full"
+                src={logo}
                 alt="Your Company"
               ></img>
               <img
-                className="hidden h-8 w-auto lg:block"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                className="hidden h-8 w-auto lg:block rounded-full"
+                src={logo}
                 alt="Your Company"
               ></img>
             </div>
@@ -71,26 +72,26 @@ function Navbar() {
               <div className="flex space-x-4">
                 {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
                 <a
-                  href="#"
+                  href="https://google.com"
                   className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
                   aria-current="page"
                 >
                   Dashboard
                 </a>
                 <a
-                  href="#"
+                  href="https://google.com"
                   className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                 >
                   Team
                 </a>
                 <a
-                  href="#"
+                  href="https://google.com"
                   className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                 >
-                  Projects
+                  About
                 </a>
                 <a
-                  href="#"
+                  href="https://google.com"
                   className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                 >
                   Calendar
@@ -158,7 +159,7 @@ function Navbar() {
               >
                 {/* <!-- Active: "bg-gray-100", Not Active: "" --> */}
                 <a
-                  href="#"
+                  href="https://google.com"
                   className="block px-4 py-2 text-sm text-gray-700"
                   role="menuitem"
                   tabindex="-1"
@@ -167,7 +168,7 @@ function Navbar() {
                   Your Profile
                 </a>
                 <a
-                  href="#"
+                  href="https://google.com"
                   className="block px-4 py-2 text-sm text-gray-700"
                   role="menuitem"
                   tabindex="-1"
@@ -176,7 +177,7 @@ function Navbar() {
                   Settings
                 </a>
                 <a
-                  href="#"
+                  href="https://google.com"
                   className="block px-4 py-2 text-sm text-gray-700"
                   role="menuitem"
                   tabindex="-1"
@@ -195,26 +196,26 @@ function Navbar() {
         <div className="space-y-1 px-2 pb-3 pt-2">
           {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
           <a
-            href="#"
+            href="https://google.com"
             className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
             aria-current="page"
           >
             Dashboard
           </a>
           <a
-            href="#"
+            href="https://google.com"
             className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
           >
             Team
           </a>
           <a
-            href="#"
+            href="https://google.com"
             className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
           >
-            Projects
+            About
           </a>
           <a
-            href="#"
+            href="https://google.com"
             className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
           >
             Calendar
