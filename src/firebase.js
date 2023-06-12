@@ -32,7 +32,7 @@ export const createUserDocument = async (user, additionData) => {
         createdAt: new Date(),
       })
     } catch(error){
-      console.log(error);
+      console.log('Error when creating user',error);
     }
   }
 }
