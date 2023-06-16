@@ -3,7 +3,7 @@ import SignUp from '../components/Auth/SignUp'
 
 function Home() {
   return (
-    <div className='h-[80vh] flex items-center justify-center'>
+    <div className='bg-[#75B657]'>
         <SignUp/>
     </div>
   )
