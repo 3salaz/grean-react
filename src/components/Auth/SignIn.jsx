@@ -84,9 +84,9 @@ function SignIn() {
           Not a member?
           <a
             href="/signUp"
-            className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+            className="pl-2 font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
           >
-            Start a 14 day free trial
+            Sign Up Here
           </a>
         </p>
       </div>

@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, createUserDocument } from "../../firebase";
+import {FcGoogle} from "react-icons/fc"
+import {AiFillTwitterCircle} from "react-icons/ai"
+import {BsFacebook} from "react-icons/bs"
 
 function SignUp() {
   const [displayName, setDisplayName] = useState("");
@@ -22,7 +25,7 @@ function SignUp() {
   };
   return (
     <div className="container bg-white">
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm px-4 pb-4 pt-12 rounded-md md:mt-4">
+      <div className="sm:mx-auto sm:w-full sm:max-w-sm px-4 pb-4 pt-12 rounded-md">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
             className="mx-auto h-10 w-auto rounded-full"
@@ -53,7 +56,7 @@ function SignUp() {
                 className="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               ></input>
             </div>
-            <div>
+            {/* <div>
               <label
                 for="checkboxLabelThree"
                 class="flex cursor-pointer select-none items-center"
@@ -84,7 +87,7 @@ function SignUp() {
                 </div>
                 Are you a business?
               </label>
-            </div>
+            </div> */}
             <label
               htmlFor="email"
               className="block text-sm font-medium leading-6 text-gray-900"
@@ -135,32 +138,39 @@ function SignUp() {
             <div className="w-full flex items-center justify-end">
               <button
                 type="submit"
-                className="bg-[#75B657] drop-shadow-2xl rounded-xl w-24 p-1 text-lg text-white shadow-2xl"
+                className="bg-[#75B657] rounded-xl w-24 p-1 text-lg text-white "
               >
                 Sign Up
               </button>
             </div>
           </form>
           <p className="mt-10 text-center text-sm text-gray-500">
-            Not a member?
+            Already a member?
             <a
-              href="/signUp"
-              className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+              href="/login"
+              className="pl-2 font-semibold leading-6 text-[#75B657] hover:text-green-700"
             >
-              Start a 14 day free trial
+              Login 
             </a>
           </p>
         </div>
         <div className="w-full flex items-center justify-center gap-8 py-8">
           <button className="bg-white border-2 rounded-lg w-16 h-16">
-            Google
+            <a href="">
+             <FcGoogle className="w-full text-4xl"/>
+            </a>
           </button>
           <button className="bg-white border-2 rounded-lg w-16 h-16">
-            Facebook
+          <a href="">
+             <AiFillTwitterCircle className="w-full text-4xl text-[#1DA1F2]"/>
+            </a>
           </button>
           <button className="bg-white border-2 rounded-lg w-16 h-16">
-            Twitter
+          <a href="">
+             <BsFacebook className="w-full text-4xl text-[#4267B2]"/>
+            </a>
           </button>
+
         </div>
       </div>
     </div>
