@@ -1,32 +1,30 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import TabBar from "./components/TabBar";
+import Tabbar from "./components/Tabbar";
 import Home from "./Routes/Home";
 import Maps from "./Routes/Maps";
 import Stats from "./Routes/Stats";
-// import LoginForm from './components/Forms/LoginForm';
+import Login from "./Routes/Login";
+import SignUp from "./components/Auth/SignUp";
 
 function App() {
   return (
-    <div>
+    <div className="flex min-h-screen flex-col">
       <Navbar/>
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/maps" element={<Maps />}></Route>
-        <Route path="/stats" element={<Stats />}></Route>
-      </Routes>
-      <TabBar/>
+      <main className="flex flex-col items-center justify-center">
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/maps" element={<Maps />}></Route>
+          <Route path="/stats" element={<Stats />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/signUp" element={<SignUp />}></Route>
+        </Routes>
+      </main>
+      <footer className="bg-[#75B657] z-5 fixed bottom-0 w-full">
+        <Tabbar/>
+      </footer>
     </div>
-
-    // <div className='bg-[#75B657] w-full'>
-    //   <Navbar/>
-    //   <main className='w-full flex flex-col md:flex-row items-center justify-center md:my-4'>
-    //     {/* <SignIn/> */}
-    //     <SignUp/>
-    //   </main>
-    //   <Tabbar/>
-    // </div>
   );
 }
 
