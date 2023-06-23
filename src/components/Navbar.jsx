@@ -15,7 +15,7 @@ function Navbar() {
   return (
     <nav className="bg-[#75B657] sticky top-0 inset-x-0 h-16 z-10">
       <div className="container mx-auto h-full px-4 flex items-center justify-between">
-        <div className="relative z-10 md:hidden">
+        <div className="absolute z-10 md:hidden">
           {/* <!-- Mobile menu button--> */}
           <motion.button
             type="button"
@@ -248,18 +248,18 @@ function Navbar() {
         <div className="">
           <ul className="flex items-center justify-center gap-x-5">
             <li className="w-14 h-14 rounded-md bg-white">
-              <a href="" className="w-full h-full flex items-center justify-center">
+              <a href="https://google.com" className="w-full h-full flex items-center justify-center">
                 <BsInstagram className="text-5xl"/>
               </a>
             </li>
             
             <li className="w-14 h-14 rounded-md bg-white">
-              <a href="" className="w-full h-full flex items-center justify-center">
+              <a href="https://google.com" className="w-full h-full flex items-center justify-center">
                 <AiFillTwitterSquare className="w-full h-full flex items-center justify-center"/>
               </a>
             </li>
             <li className="w-14 h-14 rounded-md bg-white">
-              <a href="" className="w-full h-full flex items-center justify-center">
+              <a href="https://google.com" className="w-full h-full flex items-center justify-center">
                 <BsLinkedin className="w-full h-full flex items-center justify-center"/>
               </a>
             </li>

@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="flex min-h-screen flex-col">
       <Navbar/>
-      <main className="flex flex-col items-center justify-center">
+      <main className="flex flex-col items-center justify-center h-full">
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/maps" element={<Maps />}></Route>
@@ -21,7 +21,7 @@ function App() {
           <Route path="/signUp" element={<SignUp />}></Route>
         </Routes>
       </main>
-      <footer className="bg-[#75B657] z-5 fixed bottom-0 w-full">
+      <footer className="bg-[#75B657] z-5 fixed bottom-0 w-full h-16">
         <Tabbar/>
       </footer>
     </div>

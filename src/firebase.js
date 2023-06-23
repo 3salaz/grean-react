@@ -24,7 +24,6 @@ export const createUserDocument = async (user, additionData) => {
   if (!snapshot.exists) {
     const {email} = user;
     const {userName} = additionData;
-
     try{
       userRef.set({
         userName,

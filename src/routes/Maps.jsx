@@ -1,31 +1,55 @@
 import React, { useState } from 'react'
-import ReactMapGl from 'react-map-gl';
+import ReactMapGl, { Source, Layer } from 'react-map-gl';
 
 function Maps() {
-  const [zoom, setZoom] = useState(15);
+  const geojson = {
+    type: 'FeatureCollection',
+    features: [
+      {type: 'Feature', geometry: {type: 'Point', coordinates: [-122.4, 37.8]}}
+    ]
+  };
+  
+  const layerStyle = {
+    id: 'point',
+    type: 'circle',
+    paint: {
+      'circle-radius': 10,
+      'circle-color': '#007cbf'
+    }
+  };
+  // const [newMarker,setNewMarker] = useState(null)
   const [viewPort,setViewPort] = useState({
+    center: [-122.433247, 37.742646], // starting position
     latitide: 37.763,
     longitude: -122.417,
     zoom: 12,
-    center: [-122.433247, 37.742646], // starting position
+    
   })
+
 
   const bounds = [
     [-122.66336, 37.492987], // Southwest coordinates
     [-122.250481, 37.871651] // Northeast coordinates
     ];
   return (
-    <div className='h-[70vh] bg-green-300 w-full'>
+    <div className='h-screen bg-green-300 w-screen'>
       <ReactMapGl
       {...viewPort}
+      onMove={evt => setViewPort(evt.viewState)}
       maxBounds= {bounds} // Set the map's geographical boundaries.
-      height="80%"
+      height="100%"
       width="100%"
       mapboxAccessToken='pk.eyJ1IjoiM3NhbGF6IiwiYSI6ImNsZG1xNjZ2aDBidnozb21kNTIxNTQ1a2wifQ.0JC6qoYDFC96znCbHh4kpQ'
-      transitionDuration='500'
+      transitionDuration='50'
       mapStyle={'mapbox://styles/3salaz/cli6bc4e000m201rf0dfp3oyh'}
       >
+        <Source id="my-data" type="geojson" data={geojson}>
+          <Layer {...layerStyle} />
+        </Source>
       </ReactMapGl>
+      <div className='relative bottom-0 w-40 h-10'>
+          <div className=' rounded-s-2xl bg-white'></div>
+        </div>
     </div>
   )
 }

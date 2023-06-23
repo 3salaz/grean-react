@@ -19,11 +19,6 @@ function SignIn() {
   return (
     <div className="sm:mx-auto sm:w-full sm:max-w-sm bg-white p-4 py-12 rounded-md">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <img
-          className="mx-auto h-10 w-auto rounded-full"
-          src="https://firebasestorage.googleapis.com/v0/b/grean-de04f.appspot.com/o/logos%2FGrean-Logo.png?alt=media&token=f67c584a-d6a6-472b-bb5b-593c06211d94"
-          alt="Your Company"
-        ></img>
         <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
           Sign in to your account
         </h2>
@@ -80,13 +75,13 @@ function SignIn() {
             <button type="submit" className="bg-[#75B657] drop-shadow-2xl rounded-xl w-24 p-1 text-lg text-white shadow-2xl">Login</button>
           </div>
         </form>
-        <p className="mt-10 text-center text-sm text-gray-500">
+        <p className="mt-4 text-center text-sm text-gray-500">
           Not a member?
           <a
             href="/signUp"
-            className="pl-2 font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+            className="pl-1 font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
           >
-            Sign Up Here
+            Sign up
           </a>
         </p>
       </div>

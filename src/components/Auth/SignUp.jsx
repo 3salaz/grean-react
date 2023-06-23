@@ -11,15 +11,14 @@ function SignUp() {
   const [password, setPassword] = useState("");
   const SignUp = (e) => {
     e.preventDefault();
-    const { user } = createUserWithEmailAndPassword(
+    const user  = createUserWithEmailAndPassword(
       auth,
       email,
       password,
-      displayName
     ).then((userCredential) => {
       console.log(userCredential);
     });
-    createUserDocument(user, { displayName }).catch((error) => {
+    createUserDocument(user).catch((error) => {
       console.log(error);
     });
   };
@@ -27,17 +26,12 @@ function SignUp() {
     <div className="container bg-white">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm px-4 pb-4 pt-12 rounded-md">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <img
-            className="mx-auto h-10 w-auto rounded-full"
-            src="https://firebasestorage.googleapis.com/v0/b/grean-de04f.appspot.com/o/logos%2FGrean-Logo.png?alt=media&token=f67c584a-d6a6-472b-bb5b-593c06211d94"
-            alt="Your Company"
-          ></img>
-          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+          <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Sign Up For Your Account
           </h2>
         </div>
-        <div className="mt-8">
-          <form className="space-y-4" onSubmit={SignUp}>
+        <div className="mt-4">
+          <form className="space-y-2" onSubmit={SignUp}>
             <label
               htmlFor="displayName"
               className="block text-sm font-medium leading-6 text-gray-900"
@@ -144,7 +138,7 @@ function SignUp() {
               </button>
             </div>
           </form>
-          <p className="mt-10 text-center text-sm text-gray-500">
+          <p className="mt-4 text-center text-sm text-gray-500">
             Already a member?
             <a
               href="/login"
@@ -156,17 +150,17 @@ function SignUp() {
         </div>
         <div className="w-full flex items-center justify-center gap-8 py-8">
           <button className="bg-white border-2 rounded-lg w-16 h-16">
-            <a href="">
+            <a href="https://google.com">
              <FcGoogle className="w-full text-4xl"/>
             </a>
           </button>
           <button className="bg-white border-2 rounded-lg w-16 h-16">
-          <a href="">
+          <a href="https://google.com">
              <AiFillTwitterCircle className="w-full text-4xl text-[#1DA1F2]"/>
             </a>
           </button>
           <button className="bg-white border-2 rounded-lg w-16 h-16">
-          <a href="">
+          <a href="https://google.com">
              <BsFacebook className="w-full text-4xl text-[#4267B2]"/>
             </a>
           </button>
