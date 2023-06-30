@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import {useEffect, useState} from 'react'
 import { auth } from '../../firebase';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 
@@ -14,9 +14,11 @@ function AuthDetails() {
             }
         })
         return () => {
+            // Listens for user state change
             listen();
         }
     }, [])
+    
     const userSignOut = () => {
         signOut(auth).then(() => {
             console.log('signed out!')

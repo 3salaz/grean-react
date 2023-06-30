@@ -1,19 +1,16 @@
-import React from "react";
+
 import logo from "../../logo.png";
 import { motion, useCycle } from "framer-motion";
 import { BsInstagram, BsLinkedin } from "react-icons/bs";
 import { AiFillTwitterSquare } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 function Navbar() {
-  const user = {
-    name: "Erik",
-    email: "test5@gmail.com",
-    loggedIn: true,
-  };
+  const user = false;
   const [mobileNav, toggleMobileNav] = useCycle(false, true);
   // toggleMobileNav(); | equals true
   return (
-    <nav className="bg-[#75B657] sticky top-0 inset-x-0 h-16 z-10">
+    <nav className="bg-[#75B657] sticky top-0 inset-x-0 h-[7vh] z-10">
       <div className="container mx-auto h-full px-4 flex items-center justify-between">
         <div className="absolute z-10 md:hidden">
           {/* <!-- Mobile menu button--> */}
@@ -50,7 +47,7 @@ function Navbar() {
         </div>
         <div className="relative flex flex-1 items-center justify-center sm:items-stretch sm:justify-start sm:hidden md:flex">
           <div className="flex flex-shrink-0 items-center">
-            <a href="/">
+            <Link to="/">
             <img
               className="sm:block h-8 w-auto lg:hidden rounded-full"
               src={logo}
@@ -62,19 +59,19 @@ function Navbar() {
               alt="Your Company"
             ></img>
 
-            </a>
+            </Link>
 
           </div>
           <div className="hidden sm:ml-6 sm:block">
             <div className="flex space-x-4">
               {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
-              <a
-                href="/"
+              <Link
+                to="/"
                 className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
                 aria-current="page"
               >
                 Home
-              </a>
+              </Link>
               <a
                 href="https://google.com"
                 className="text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
@@ -96,6 +93,7 @@ function Navbar() {
             </div>
           </div>
         </div>
+        
         <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
           <button
             type="button"
@@ -119,7 +117,7 @@ function Navbar() {
           </button>
 
           {/* <!-- Profile dropdown --> */}
-          {!user ? (
+          {user ? (
             <div className="relative ml-3 z-30">
               <div>
                 <button
@@ -149,7 +147,7 @@ function Navbar() {
                                   To: "transform opacity-0 scale-95"
             --> */}
               <div
-                className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                className="absolute right-0 z-10 mt-5 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                 role="menu"
                 aria-orientation="vertical"
                 aria-labelledby="user-menu-button"
@@ -187,7 +185,7 @@ function Navbar() {
             </div>
           ) : (
             <div className="ml-3 text-white">
-              <a href="/login">Login</a>
+              <Link to="/login">Login</Link>
             </div>
           )}
         </div>

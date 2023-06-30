@@ -1,27 +1,30 @@
 import { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth, createUserDocument } from "../../firebase";
-import {FcGoogle} from "react-icons/fc"
-import {AiFillTwitterCircle} from "react-icons/ai"
-import {BsFacebook} from "react-icons/bs"
+import { auth } from "../../firebase";
+import { FcGoogle } from "react-icons/fc";
+import { AiFillTwitterCircle } from "react-icons/ai";
+import { BsFacebook } from "react-icons/bs";
+import { Link, useNavigate} from 'react-router-dom';
+import { UserAuth } from "../../context/AuthContext";
+function SignUpForm() {
 
-function SignUp() {
-  const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const SignUp = (e) => {
-    e.preventDefault();
-    const user  = createUserWithEmailAndPassword(
-      auth,
-      email,
-      password,
-    ).then((userCredential) => {
-      console.log(userCredential);
-    });
-    createUserDocument(user).catch((error) => {
-      console.log(error);
-    });
-  };
+  const [error, setError] = useState("");
+  const {createUser} = UserAuth();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) =>{
+    e.preventDefault()
+    setError('')
+    try{
+      await createUser(auth, email, password)
+      navigate('/account')
+    } catch (e) {
+      setError(e.message)
+      console.log(e.message)
+    }
+  }
+
   return (
     <div className="container bg-white">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm px-4 pb-4 pt-12 rounded-md">
@@ -31,25 +34,7 @@ function SignUp() {
           </h2>
         </div>
         <div className="mt-4">
-          <form className="space-y-2" onSubmit={SignUp}>
-            <label
-              htmlFor="displayName"
-              className="block text-sm font-medium leading-6 text-gray-900"
-            >
-              Name
-            </label>
-            <div className="mt-2">
-              <input
-                onChange={(e) => setDisplayName(e.target.value)}
-                id="displayName"
-                value={displayName}
-                name="displayName"
-                type="name"
-                placeholder="Enter Your Name"
-                required
-                className="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              ></input>
-            </div>
+          <form className="space-y-2" onSubmit={handleSubmit}>
             <label
               htmlFor="email"
               className="block text-sm font-medium leading-6 text-gray-900"
@@ -112,31 +97,30 @@ function SignUp() {
               href="/login"
               className="pl-2 font-semibold leading-6 text-[#75B657] hover:text-green-700"
             >
-              Login 
+              Login
             </a>
           </p>
         </div>
         <div className="w-full flex items-center justify-center gap-8 py-8">
           <button className="bg-white border-2 rounded-lg w-16 h-16">
             <a href="https://google.com">
-             <FcGoogle className="w-full text-4xl"/>
+              <FcGoogle className="w-full text-4xl" />
             </a>
           </button>
           <button className="bg-white border-2 rounded-lg w-16 h-16">
-          <a href="https://google.com">
-             <AiFillTwitterCircle className="w-full text-4xl text-[#1DA1F2]"/>
+            <a href="https://google.com">
+              <AiFillTwitterCircle className="w-full text-4xl text-[#1DA1F2]" />
             </a>
           </button>
           <button className="bg-white border-2 rounded-lg w-16 h-16">
-          <a href="https://google.com">
-             <BsFacebook className="w-full text-4xl text-[#4267B2]"/>
+            <a href="https://google.com">
+              <BsFacebook className="w-full text-4xl text-[#4267B2]" />
             </a>
           </button>
-
         </div>
       </div>
     </div>
   );
 }
 
-export default SignUp;
+export default SignUpForm;

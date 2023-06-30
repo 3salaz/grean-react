@@ -3,7 +3,7 @@ import {motion} from 'framer-motion';
 
 const icons = ["I", "B","C",'D'];
 
-const MenuItem = ({item}) => {
+const MenuItem = (item) => {
     return(
         <motion.li className='top-0 left-0 w-full h-14 text-center relative grid place-items-center items-end p-1.5'>
           <motion.div className='h-12 pb-2.5 z-50 text-black'>{item}</motion.div>
