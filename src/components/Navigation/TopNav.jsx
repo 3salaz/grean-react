@@ -5,10 +5,10 @@ import { BsInstagram, BsLinkedin } from "react-icons/bs";
 import { AiFillTwitterSquare } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
-function Navbar() {
+function TopNav() {
   const user = false;
   const [mobileNav, toggleMobileNav] = useCycle(false, true);
-  // toggleMobileNav(); | equals true
+  
   return (
     <nav className="bg-[#75B657] sticky top-0 inset-x-0 h-[7vh] z-10">
       <div className="container mx-auto h-full px-4 flex items-center justify-between">
@@ -184,9 +184,9 @@ function Navbar() {
               </div>
             </div>
           ) : (
-            <div className="ml-3 text-white">
-              <Link to="/login">Login</Link>
-            </div>
+            <button className="ml-3 text-white">
+              <Link to="/signin">Sign In</Link>
+            </button>
           )}
         </div>
       </div>
@@ -269,4 +269,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default TopNav;

@@ -1,43 +1,54 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navigation/Navbar";
-import Home from "./Routes/Home";
-import Maps from "./Routes/Maps";
-import Stats from "./Routes/Stats";
-import Login from "./Routes/Login";
-import SignUp from "./components/Auth/SignUp";
 import { AuthContextProvider } from "./context/AuthContext";
+
+// Routes
 import Account from "./Routes/Account";
+import Team from "./Routes/Team";
+import Contact from "./Routes/Contact";
+import About from "./Routes/About";
+import Maps from "./Routes/Maps";
+import Profile from "./Routes/Profile";
+
+// Components
+import Stats from "./components/Stats";
+import BottomNav from "./components/Navigation/BottomNav";
+import SignUp from "./components/SignUp";
+import SignIn from "./components/SignIn";
+import SideNav from "./components/Navigation/SideNav";
+import TopNav from "./components/Navigation/TopNav";
 
 function App() {
   return (
     <AuthContextProvider>
-    <div className="flex min-h-screen flex-col">
-      <Navbar />
-      <div className="h-full w-full">
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/account" element={<Account/>}></Route>
-          <Route path="/maps" element={<Maps />}></Route>
-          <Route path="/stats" element={<Stats />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/signUp" element={<SignUp />}></Route>
-        </Routes>
-      </div>
-      <footer className="bg-[#75B657] bottom-0 z-5 fixed w-full h-16">
-          {/* <!--Copyright section--> */}
-          <div>Tabs</div>
+      <div className="flex min-h-screen flex-col">
+        <TopNav />
+        <main className="h-full w-full flex">
+          <Routes>
+            <Route path="/" element={<Profile />}></Route>
+            <Route path="/profile" element={<Profile />}></Route>
+            <Route path="/account" element={<Account />}></Route>
+            <Route path="/maps" element={<Maps />}></Route>
+            <Route path="/stats" element={<Stats />}></Route>
+            <Route path="/signin" element={<SignIn />}></Route>
+            <Route path="/signup" element={<SignUp />}></Route>
+            <Route path="/team" element={<Team />}></Route>
+            <Route path="/about" element={<About />}></Route>
+            <Route path="/contact" element={<Contact />}></Route>
+          </Routes>
+        </main>
+        <SideNav />
+        <BottomNav />
+
+        {/* <footer className="bg-slate-800 bottom-0 z-5 fixed w-full">
           <div className="p-2 text-center bg-slate-800">
-            <span className="text-[#75B657]">© 2023 Copyright:</span>
-            <a
-              className="font-semibold pl-px dark:text-white"
-              href="https://tailwind-elements.com/"
-            >
+            <span className="text-white">© 2023 Copyright:</span>
+            <Link className="font-semibold pl-1.5 text-[#75B657]" to="/contact">
               Grean
-            </a>
+            </Link>
           </div>
-      </footer>
-    </div>
+        </footer> */}
+      </div>
     </AuthContextProvider>
   );
 }

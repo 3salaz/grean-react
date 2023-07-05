@@ -61,7 +61,7 @@ const GoogleMapComponent = () => {
             <GoogleMap 
                 mapContainerStyle={containerStyle} 
                 center={center} 
-                zoom={15}
+                zoom={5}
                 onClick={mapClicked}
             >
                 {markers.map((marker, index) => (

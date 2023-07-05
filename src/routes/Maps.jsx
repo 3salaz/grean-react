@@ -1,4 +1,4 @@
-import MainMap from '../components/Maps/MainMap';
+import MainMap from '../components/MainMap';
 
 function Maps() {
 

@@ -1,10 +1,12 @@
+import React from 'react'
 import Cover from '../components/Landing/Cover'
-function Home() {
+
+function Profile() {
   return (
     <div className='flex'>
-      <Cover/>
-    </div>
+    <Cover/>
+  </div>
   )
 }
 
-export default Home
+export default Profile
