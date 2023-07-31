@@ -1,26 +1,46 @@
-import { useState } from "react";
-import { auth } from "../firebase";
-import googleBtn from "../Images/btn_google_signin_dark_focus_web@2x.png";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
+import { db } from "../firebase";
+import { doc, setDoc } from "firebase/firestore";
+import GoogleButton from "react-google-button";
 
 function SignUpForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { createUser } = UserAuth();
+  const {createUser,user,googleSignIn } = UserAuth();
   const navigate = useNavigate();
+
+  const handleGoogleSignIn = async (e) => {
+    try {
+      await googleSignIn()
+      navigate('/profile');
+    } catch(e) {
+      console.log(e)
+    }
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
     try {
-      await createUser(auth, email, password);
-      navigate("/account");
-    } catch (e) {
+      await createUser(email, password)
+      await setDoc(doc(db, `users`,`${user.uid}`), {
+        email : email,
+        createdAt: new Date()
+      });
+      navigate('/profile');
+    } catch(e) {
       setError(e.message);
-      console.log(error);
+      console.log(e.message);
     }
   };
+
+  useEffect((user, navigate) => {
+    if(user != null) {
+      navigate('/profile');
+    }
+  },[]);
 
   return (
     <div className="flex justify-center items-center w-full">
@@ -43,8 +63,6 @@ function SignUpForm() {
                 <div className="mt-2">
                   <input
                     onChange={(e) => setEmail(e.target.value)}
-                    id="email"
-                    value={email}
                     name="email"
                     type="email"
                     autoComplete="email"
@@ -60,14 +78,6 @@ function SignUpForm() {
                   >
                     Password
                   </label>
-                  <div className="text-sm">
-                    <a
-                      href="https://google.com"
-                      className="font-semibold text-indigo-600 hover:text-indigo-500"
-                    >
-                      Forgot password?
-                    </a>
-                  </div>
                 </div>
                 <div className="mt-2">
                   <input
@@ -101,15 +111,7 @@ function SignUpForm() {
               </p>
             </div>
             <div className="w-full flex items-center justify-center gap-8 py-8">
-              <a href="google.com">
-                <button className="w-48 h-16">
-                  <img
-                    className="rounded-md drop-shadow-xl"
-                    src={googleBtn}
-                    alt="Sign in with Google Button"
-                  ></img>
-                </button>
-              </a>
+              <GoogleButton onClick={handleGoogleSignIn} />
             </div>
           </div>
         </div>

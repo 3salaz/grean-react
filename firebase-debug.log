@@ -1,0 +1,33 @@
+[debug] [2023-07-31T05:32:47.974Z] ----------------------------------------------------------------------
+[debug] [2023-07-31T05:32:47.976Z] Command:       /Users/3salaz/.nvm/versions/node/v16.17.1/bin/node /Users/3salaz/.nvm/versions/node/v16.17.1/bin/firebase serve
+[debug] [2023-07-31T05:32:47.977Z] CLI Version:   12.0.1
+[debug] [2023-07-31T05:32:47.977Z] Platform:      darwin
+[debug] [2023-07-31T05:32:47.978Z] Node Version:  v16.17.1
+[debug] [2023-07-31T05:32:47.979Z] Time:          Sun Jul 30 2023 22:32:47 GMT-0700 (Pacific Daylight Time)
+[debug] [2023-07-31T05:32:47.979Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-07-31T05:32:48.083Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-07-31T05:32:48.084Z] > authorizing via signed-in user (3salaz.dev@gmail.com)
+[debug] [2023-07-31T05:32:48.084Z] [iam] checking project grean-de04f for permissions ["firebase.projects.get"]
+[debug] [2023-07-31T05:32:48.086Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/grean-de04f:testIamPermissions [none]
+[debug] [2023-07-31T05:32:48.086Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/grean-de04f:testIamPermissions x-goog-quota-user=projects/grean-de04f
+[debug] [2023-07-31T05:32:48.086Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/grean-de04f:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2023-07-31T05:32:48.252Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/grean-de04f:testIamPermissions 200
+[debug] [2023-07-31T05:32:48.252Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/grean-de04f:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2023-07-31T05:32:48.253Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/grean-de04f [none]
+[debug] [2023-07-31T05:32:48.728Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/grean-de04f 200
+[debug] [2023-07-31T05:32:48.728Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/grean-de04f {"projectId":"grean-de04f","projectNumber":"881625022209","displayName":"grean","name":"projects/grean-de04f","resources":{"hostingSite":"grean-de04f","realtimeDatabaseInstance":"grean-de04f-default-rtdb","storageBucket":"grean-de04f.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_28bcf445-d3dd-4825-8816-2ace76481d48"}
+[info] 
+[info] === Serving from '/Users/3salaz/Documents/Clients/grean/grean-app'...
+[info] 
+[debug] [2023-07-31T05:32:48.732Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/grean-de04f/sites 
+[debug] [2023-07-31T05:32:49.341Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/grean-de04f/sites 200
+[debug] [2023-07-31T05:32:49.341Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/grean-de04f/sites {"sites":[{"name":"projects/grean-de04f/sites/grean-de04f","defaultUrl":"https://grean-de04f.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2023-07-31T05:32:49.342Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/grean-de04f/webApps/-/config [none]
+[debug] [2023-07-31T05:32:49.935Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/grean-de04f/webApps/-/config 200
+[debug] [2023-07-31T05:32:49.935Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/grean-de04f/webApps/-/config {"projectId":"grean-de04f","appId":"1:881625022209:web:fc7fed7164fbbf7925a500","databaseURL":"https://grean-de04f-default-rtdb.firebaseio.com","storageBucket":"grean-de04f.appspot.com","locationId":"us-central","apiKey":"AIzaSyAAp7X6MMLfJtAnsdZJTDgWD6n7z_zpjZY","authDomain":"grean-de04f.firebaseapp.com","messagingSenderId":"881625022209","measurementId":"G-6N4REHK39G"}
+[debug] [2023-07-31T05:32:49.961Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/grean-de04f [none]
+[debug] [2023-07-31T05:32:50.291Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/grean-de04f 200
+[debug] [2023-07-31T05:32:50.291Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/grean-de04f {"projectId":"grean-de04f","projectNumber":"881625022209","displayName":"grean","name":"projects/grean-de04f","resources":{"hostingSite":"grean-de04f","realtimeDatabaseInstance":"grean-de04f-default-rtdb","storageBucket":"grean-de04f.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_28bcf445-d3dd-4825-8816-2ace76481d48"}
+[info] i  hosting[grean-de04f]: Serving hosting files from: build {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mbuild\u001b[22m"}}
+[info] ✔  hosting[grean-de04f]: Local server: http://localhost:5003 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://localhost:5003\u001b[22m\u001b[24m"}}

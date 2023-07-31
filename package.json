@@ -4,7 +4,9 @@
   "private": true,
   "homepage": "/",
   "dependencies": {
+    "@ap.cx/react-fullpage": "^0.3.0",
     "@emailjs/browser": "^3.11.0",
+    "@fullpage/react-fullpage": "^0.1.40",
     "@react-google-maps/api": "^2.18.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -19,6 +21,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-firebase-hooks": "^5.1.1",
+    "react-google-button": "^0.7.2",
     "react-icons": "^4.9.0",
     "react-map-gl": "^7.0.25",
     "react-router-dom": "^6.11.2",
@@ -29,6 +32,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy": "firebase deploy",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

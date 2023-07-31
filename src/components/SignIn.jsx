@@ -1,23 +1,45 @@
-import { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase";
-import googleBtn from "../Images/btn_google_signin_dark_focus_web@2x.png";
-import { Link } from "react-router-dom";
+import {  useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { UserAuth } from "../context/AuthContext";
+import { GoogleButton } from 'react-google-button';
+
 
 function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState('');
+  const { signIn, googleSignIn, user} = UserAuth();
+  const navigate = useNavigate();
 
-  const login = (e) => {
+  const handleGoogleSignIn = async () => {
+    try {
+      await googleSignIn()
+      navigate("/profile");
+    } catch(e) {
+      console.log(e)
+    }
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        console.log(userCredential);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    setError('')
+    try {
+      await signIn(email,password)
+      console.log(user)
+      navigate("/profile");
+    } catch (e) {
+      setError(e.message);
+      console.log(setError);
+      console.log(error);
+    };
   };
+  useEffect((user, navigate) => {
+    if(user != null) {
+      console.log(user)
+      navigate('/profile');
+    }
+  },[]);
+
   return (
     <div className="flex w-full justify-center items-center">
       <div className="px-3 container h-[86vh] flex items-center justify-cente max-w-lg">
@@ -29,7 +51,9 @@ function SignIn() {
               </h2>
             </div>
             <div className="mt-8">
-              <form className="space-y-4" onSubmit={login}>
+              <form 
+                className="space-y-4" 
+                onSubmit={handleSubmit}>
                 <label
                   id="email"
                   htmlFor="email"
@@ -41,7 +65,6 @@ function SignIn() {
                   <input
                     onChange={(e) => setEmail(e.target.value)}
                     id="email"
-                    value={email}
                     name="email"
                     type="email"
                     autoComplete="email"
@@ -70,7 +93,6 @@ function SignIn() {
                 <div className="mt-2">
                   <input
                     onChange={(e) => setPassword(e.target.value)}
-                    value={password}
                     name="password"
                     type="password"
                     autoComplete="current-password"
@@ -98,15 +120,7 @@ function SignIn() {
               </p>
             </div>
             <div className="w-full flex items-center justify-center gap-8 py-8">
-              <a href="google.com">
-                <button className="w-48 h-16">
-                  <img
-                    className="rounded-md drop-shadow-xl"
-                    src={googleBtn}
-                    alt="Sign in with Google Button"
-                  ></img>
-                </button>
-              </a>
+              <GoogleButton onClick={handleGoogleSignIn} />
             </div>
           </div>
         </div>
