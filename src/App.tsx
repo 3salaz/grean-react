@@ -1,18 +1,41 @@
-import React from 'react';
-import './App.css';
-import SignIn from './components/Auth/SignIn';
-import SignUp from './components/Auth/SignUp';
-import AuthDetails from './components/Auth/AuthDetails';
-import ContactForm from './components/Mailer/ContactForm';
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import { AuthContextProvider } from "./context/AuthContext";
+
+// Routes
+import Profile from "./routes/Profile";
+import Landing from "./routes/Landing";
+import Settings from "./routes/Settings";
+
+// Components
+import Navbar from "./components/Navbar";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Admin from "./components/Admin";
+
 
 function App() {
   return (
-    <div className="App">
-      <SignIn/>
-      <SignUp/>
-      <AuthDetails/>
-      <ContactForm/>
-    </div>
+    <AuthContextProvider>
+      {/* <Preloader/> */}
+      <Navbar />
+      <div className="h-full">
+      <Routes>
+        <Route path="/" element={<Landing />}></Route>
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        ></Route>
+        <Route
+          path="/admin"
+          element={<Admin />}></Route>
+        <Route path="/settings" element={<Settings />}></Route>
+      </Routes>
+      </div>
+    </AuthContextProvider>
   );
 }
 
