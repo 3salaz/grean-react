@@ -1,1 +1,0 @@
-![Home](../assets/grean-bg.jpg)
