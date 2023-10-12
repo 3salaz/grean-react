@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
 import { GoogleButton } from "react-google-button";
+import { addDoc, collection, doc, getDoc } from "firebase/firestore";
+import { db } from "../../firebase";
 
 function SignUpModal({ handleClose }) {
   const [email, setEmail] = useState("");
@@ -12,32 +14,49 @@ function SignUpModal({ handleClose }) {
   const { createUser, googleSignIn, user } = UserAuth();
   const navigate = useNavigate();
 
+  useEffect((user, navigate) => {
+    if (user != null) {
+      const docRef = doc(db, "users", user.uid);
+      const docSnap = getDoc(docRef);
+      if (docSnap.exists()) {
+        console.log("Document data:", docSnap.data());
+      } else {
+        // docSnap.data() will be undefined in this case
+        console.log("No such document!");
+      }
+      navigate("/profile");
+    }
+  }, []);
+
   const handleGoogleSignIn = async () => {
     try {
       await googleSignIn();
       navigate("/profile");
+      handleClose()
     } catch (e) {
       console.log(e);
     }
   };
 
   const handleSignUp = async (e) => {
+    const usersRef = collection(db, "users");
     e.preventDefault();
     setError("");
     try {
-      await createUser(email, password);
-      console.log(user);
+      await Promise.all([
+        createUser(email, password),
+        addDoc(usersRef, {
+          email: email,
+          userId: user.uid
+        }),
+      ]);
+      handleClose()
+      navigate("/profile");
     } catch (e) {
       setError(e.message);
       console.log(setError);
     }
   };
-
-  useEffect((user, navigate) => {
-    if (user != null) {
-      navigate("/profile");
-    }
-  }, []);
 
   const dropIn = {
     hidden: {
@@ -118,6 +137,7 @@ function SignUpModal({ handleClose }) {
                       <label
                         id="password"
                         htmlFor="password"
+                        placeholder="Enter Your Password"
                         className="block text-sm font-medium leading-6 text-grean"
                       >
                         Password

@@ -2,45 +2,42 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 import { db } from "../firebase";
-import { doc, setDoc } from "firebase/firestore";
+import { collection, doc, getDoc, setDoc } from "firebase/firestore";
 import GoogleButton from "react-google-button";
 
 function SignUpForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const {createUser,user,googleSignIn } = UserAuth();
+  const { createUser, user, googleSignIn } = UserAuth();
   const navigate = useNavigate();
 
   const handleGoogleSignIn = async (e) => {
     try {
-      await googleSignIn()
-      navigate('/profile');
-    } catch(e) {
-      console.log(e)
+      await googleSignIn();
+      navigate("/profile");
+    } catch (e) {
+      console.log(e);
     }
-  }
+  };
+  const usersRef = collection(db, "users");
 
-  const handleSubmit = async (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      await createUser(email, password)
-      await setDoc(doc(db, `users`,`${user.uid}`), {
-        email : email,
-        createdAt: new Date()
+      // await createUser(email, password)
+      await addDoc(usersRef, {
+        displayName: displayName,
+        email: email,
+        phoneNumber: phoneNumber,
       });
-      navigate('/profile');
-    } catch(e) {
+      // navigate('/profile');
+    } catch (e) {
       setError(e.message);
       console.log(e.message);
     }
   };
 
-  useEffect((user, navigate) => {
-    if(user != null) {
-      navigate('/profile');
-    }
-  },[]);
 
   return (
     <div className="flex justify-center items-center w-full">
@@ -53,7 +50,7 @@ function SignUpForm() {
               </h2>
             </div>
             <div className="mt-8">
-              <form className="space-y-4" onSubmit={handleSubmit}>
+              <form className="space-y-4">
                 <label
                   htmlFor="email"
                   className="block text-sm font-medium leading-6 text-[#75B657]"
@@ -94,6 +91,7 @@ function SignUpForm() {
                 <div className="w-full flex items-center justify-end">
                   <button
                     type="submit"
+                    onClick={handleSignUp}
                     className="bg-[#75B657] rounded-xl w-24 p-1 text-lg text-white "
                   >
                     Sign Up

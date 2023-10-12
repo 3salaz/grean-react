@@ -10,6 +10,7 @@ import Settings from "./routes/Settings";
 // Components
 import Navbar from "./components/Navbar";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Admin from "./components/Admin";
 
 
 function App() {
@@ -28,6 +29,9 @@ function App() {
             </ProtectedRoute>
           }
         ></Route>
+        <Route
+          path="/admin"
+          element={<Admin />}></Route>
         <Route path="/settings" element={<Settings />}></Route>
       </Routes>
       </div>

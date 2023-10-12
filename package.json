@@ -6,7 +6,6 @@
   "dependencies": {
     "@ap.cx/react-fullpage": "^0.3.0",
     "@emailjs/browser": "^3.11.0",
-    "@fullpage/react-fullpage": "^0.1.40",
     "@react-google-maps/api": "^2.18.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -15,6 +14,7 @@
     "@types/node": "^16.18.31",
     "@types/react": "^18.2.6",
     "@types/react-dom": "^18.2.4",
+    "appwrite": "^13.0.0",
     "firebase": "^9.22.0",
     "framer-motion": "^10.12.16",
     "mapbox-gl": "^2.15.0",

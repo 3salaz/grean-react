@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
+import RequestPickupModal from "./Modal/RequestPickupModal";
 
-function MapPost({calandarOpen,openCalendar,closeCalendar}) {
-
+function MapPost() {
   return (
-    <div className="mx-auto max-w-[300px] gap-2 rounded-md drop-shadow-xl h-auto p-4 bg-opacity-90">
-
-      <div className="flex gap-3 items-center justify-between w-full h-full">
+    <div className="max-w-[350px] m-auto rounded-md drop-shadow-xl h-auto p-4">
+      {/* <RequestPickupModal/> */}
+      <div className="flex items-center justify-between w-full h-full gap-4">
         <motion.button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
@@ -17,7 +17,6 @@ function MapPost({calandarOpen,openCalendar,closeCalendar}) {
           <motion.button
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.9 }}
-            onClick={() => (calandarOpen ? closeCalendar() : openCalendar())}
             className="rounded-md bg-white bg-green-300 p-2 px-3 aspect-square border border-yellow-500 flex items-center justify-center drop-shadow-xl"
           >
             <ion-icon size="large" name="calendar-number-outline"></ion-icon>

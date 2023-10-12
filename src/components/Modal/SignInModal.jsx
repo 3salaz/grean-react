@@ -17,7 +17,7 @@ function SignInModal({ handleClose}) {
     try {
       await googleSignIn();
       navigate("/profile");
-      console.log(user)
+      handleClose()
     } catch (e) {
       console.log(e);
     }
@@ -28,10 +28,10 @@ function SignInModal({ handleClose}) {
     setError("");
     try {
       await signIn(email, password);
+      handleClose()
     } catch (e) {
       setError(e.message);
       console.log(setError);
-      console.log(error);
     }
   };
 

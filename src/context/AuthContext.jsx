@@ -15,7 +15,6 @@ const UserContext = createContext();
 export const AuthContextProvider = ({ children }) => {
   // google sign In
   const [user, setUser] = useState({});
-
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
@@ -26,6 +25,7 @@ export const AuthContextProvider = ({ children }) => {
   };
   // sign in
   const signIn = (email, password) => {
+    console.log(signInWithEmailAndPassword(auth, email, password))
     return signInWithEmailAndPassword(auth, email, password);
   };
   // logout

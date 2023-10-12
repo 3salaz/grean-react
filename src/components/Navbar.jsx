@@ -74,7 +74,7 @@ function Navbar() {
           <div className="flex flex-shrink-0 items-center">
             <Link to="/">
               <img
-                className="sm:block h-10 w-auto lg:hidden rounded-full"
+                className="sm:block h-9 w-auto lg:hidden rounded-full"
                 src={logo}
                 alt="Company logo"
               ></img>
@@ -117,7 +117,7 @@ function Navbar() {
         </div>
 
         {/* Account Nav / Alerts */}
-        <div className="absolute inset-y-0 right-0 flex gap-4 items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+        <div className="absolute inset-y-0 right-2 flex gap-2 items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
           <motion.button
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.9 }}
@@ -130,7 +130,7 @@ function Navbar() {
 
           {/* <!-- Profile dropdown --> */}
           {user ? (
-            <div className="relative ml-3 z-30">
+            <div className="relative z-30">
               <motion.button
                 type="button"
                 className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
@@ -144,7 +144,7 @@ function Navbar() {
               >
                 <span className="sr-only">Open Users Menu</span>
                 <img
-                  className="h-8 w-8 rounded-full bg-white"
+                  className="h-10 w-10 rounded-full bg-white"
                   src={user.photoURL || avatar}
                   alt="users profile pic"
                 ></img>

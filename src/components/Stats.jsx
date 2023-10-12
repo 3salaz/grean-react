@@ -1,45 +1,37 @@
 import { motion } from "framer-motion";
 function Stats() {
   return (
-    <motion.div className="mx-auto max-w-[400px] gap-2 bg-orange p-3 rounded-md drop-shadow-xl h-[60vh]">
-      <div className="flex flex-col items-center justify-center">
+    <motion.div className="mx-auto max-w-[400px] gap-2 border-4 border-orange bg-white p-3 rounded-md drop-shadow-xl h-[500px]">
+      <div className="flex flex-col items-center justify-center gap-3">
         <div className="bg-white flex flex-col items-center justify-center w-full rounded-md">
-          <div className="text-lg font-bold text-orange">Our Impact</div>
-          <div className="text-2xl text-grean">
-            30,137 <span className="text-xl">lbs</span>
-          </div>
-          <div>Of waste recycled!</div>
-        </div>
-        <hr className="bg-white m-2" />
-        <div className="flex flex-col gap-2">
-          <div className="flex justify-between">
-            <div className="flex items-center justify-center">
-              <ion-icon name="home"></ion-icon>
+          <header className="flex items-center justify-center gap-3">
+            <img
+              className="rounded-full"
+              alt="placeholder"
+              src="https://placeholder.com/100x100"
+            ></img>
+            <h2 className="text-lg font-bold text-grean">Emporium Arcade | SF</h2>
+          </header>
+          <section className="flex items-center justify-center gap-4 py-4">
+            <button className="bg-orange text-white px-4 p-2 rounded-lg">
+              Latest
+            </button>
+            <button className="text-grean p-2 px-4">Overall</button>
+          </section>
+          <section className="w-full bg-orange py-2 rounded-md">
+            <div className="flex w-full justify-evenly items-center text-white">
+              <div className="flex items-center justify-center">
+                <ion-icon size="large" name="home-outline"></ion-icon>
+              </div>
+              <h4 className="text-xl font-bold">473</h4>
+              <button className="text-white flex items-center justify-center">
+                <ion-icon
+                  size="large"
+                  name="information-circle-outline"
+                ></ion-icon>
+              </button>
             </div>
-            <div className="flex flex-col items-center justify-center">
-              <div className="text-md">400</div>
-              <div className="text-sm">Homes powered for a month!</div>
-            </div>
-          </div>
-          <div className="flex justify-between">
-            <div className="flex items-center justify-center">
-              <ion-icon name="car-outline"></ion-icon>
-            </div>
-            <div className="flex flex-col items-center justify-center">
-              <div className="">14,800</div>
-              <div>miles traveled!</div>
-            </div>
-          </div>
-          <div className="flex justify-between">
-            <div className="flex items-center justify-center">
-              <ion-icon name="trash"></ion-icon>
-            </div>
-            <div className="flex flex-col items-center justify-center">
-              <div>17,050</div>
-              <div>Cubic Feeet</div>
-              <div>Of Waste Diverted from landfills</div>
-            </div>
-          </div>
+          </section>
         </div>
       </div>
     </motion.div>
