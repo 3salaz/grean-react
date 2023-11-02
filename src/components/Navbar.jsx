@@ -4,7 +4,7 @@ import { motion, useCycle } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 import { useState } from "react";
-import SignUpModal from "./Modal/SignUpModal";
+import SignUpModal from "./Modals/SignUpModal";
 
 function Navbar() {
   const { user, logOut } = UserAuth();
@@ -125,7 +125,7 @@ function Navbar() {
             className="rounded-full w-10 h-10 p-1 bg-white text-red-500 hover:text-[#75B657] focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 flex items-center justify-center"
           >
             <span className="sr-only">View notifications</span>
-            <ion-icon size="large" name="notifications-outline"></ion-icon>
+            <ion-icon size="large" name="notifications-outline"><span className="z-10">2</span></ion-icon>
           </motion.button>
 
           {/* <!-- Profile dropdown --> */}
@@ -154,7 +154,7 @@ function Navbar() {
             <motion.button
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.9 }}
-              className="bg-red-400 rounded-sm"
+              className="bg-red-600 rounded-sm"
               onClick={() => (signUpOpen ? closeSignUp() : openSignUp())}
             >
               <div className="w-16 p-1 text-white  flex items-center justify-center font-bold text-sm">
@@ -187,13 +187,13 @@ function Navbar() {
             </div>
             <div className="space-y-5 pt-16">
               <Link to="/">
-                <a
+                <div
                   href="#landing"
                   className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
                   aria-current="page"
                 >
                   Home
-                </a>
+                </div>
               </Link>
               <Link
                 to="/team"

@@ -1,11 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useCycle, motion } from "framer-motion";
-import Account from "../components/Account";
-import Stats from "../components/Stats";
-import MapPost from "../components/MapPost";
-import Map from "../components/Map";
+import AccountTab from "../components/Tabs/AccountTab";
+import StatsTab from "../components/Tabs/StatsTab";
+import MapTab from "../components/Tabs/MapTab";
+import Map from "../components/Map/Map";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../firebase";
+import { UserAuth } from "../context/AuthContext";
 
 function Profile() {
+  const { user } = UserAuth();
+  useEffect(() => {
+    console.log(user)
+    const setUpUser = async () => {
+        try {
+          await setDoc(doc(db, "users", user.uid), {
+            userID: user.uid|| null,
+            userName: user.displayName || null,
+            userEmail: user.email || null,
+          });
+        } catch (e) {
+        console.log(e)
+        }
+    };
+    if (user) {
+      setUpUser();
+    } else {
+      console.log("no user")
+    }
+    
+  }, [user]);
   const toggleComponent = useCycle(false, true);
   const MenuItems = [
     {
@@ -29,7 +53,6 @@ function Profile() {
   return (
     <div className="h-full overflow-hidden">
       <Map />
-
       <div className="bg-slate-800 max-h-[5rem] px-6 bottom-0 z-5 fixed w-full rounded-t-lg border-t-[5px] border-t-white">
         <ul className="flex relative justify-center">
           <span
@@ -73,11 +96,11 @@ function Profile() {
         {(() => {
           switch (active) {
             case 0:
-              return <Account />;
+              return <AccountTab />;
             case 1:
-              return <MapPost />;
+              return <MapTab/>;
             case 2:
-              return <Stats />;
+              return <StatsTab />;
             default:
               return <></>;
           }

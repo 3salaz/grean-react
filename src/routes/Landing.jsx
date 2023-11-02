@@ -3,14 +3,14 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import AnimatedTextWord from "../components/AnimatedTextWord";
-import SignInModal from "../components/Modal/SignInModal";
+import SignInModal from "../components/Modals/SignInModal";
 function Landing() {
-  const [signInOpen, setSignInOpen] = useState(false);
-  const close = () => setSignInOpen(false)
-  const open = () => setSignInOpen(true)
+  const [signInModalOpen, setSignInModalOpen] = useState(false);
+  const closeModal = () => setSignInModalOpen(false);
+  const openModal = () => setSignInModalOpen(true);
   const { user } = UserAuth();
   return (
-    <div className="w-full h-[84vh] overflow-hidden">
+    <div className="w-full h-[84vh]">
       <section className="h-full flex justify-center items-center">
         <img
           className="w-full h-full absolute object-cover blur-sm"
@@ -20,32 +20,33 @@ function Landing() {
         <div className="h-full w-full absolute z-20 flex items-center justify-center text-center">
           <div className="w-full flex flex-col items-center justify-center gap-8">
             <div className="w-full">
-            <AnimatedTextWord text="GREAN"/>
+              <AnimatedTextWord text="GREAN" />
             </div>
             {user ? (
-              <Link
-                to="/profile"
-              >
+              <Link to="/profile">
                 <motion.button
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 0.9 }}
                   className="w-20 h-20 border-4 border-grean text-grean p-2 bg-white rounded-full flex items-center justify-center"
                 >
-                Profile
+                  Profile
                 </motion.button>
               </Link>
-              
             ) : (
               <motion.button
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}
                 className=""
-                onClick={() => (signInOpen ? close() : open())}
+                onClick={() => (signInModalOpen ? closeModal() : openModal())}
               >
-                  <div className="w-36 p-2 bg-white rounded-lg flex items-center justify-center">Sign In</div>
+                <div className="w-36 p-2 bg-white rounded-lg flex items-center justify-center">
+                  Sign In
+                </div>
               </motion.button>
             )}
-            {signInOpen && <SignInModal modalOpen={signInOpen} handleClose={close}/>}
+            {signInModalOpen && (
+              <SignInModal modalOpen={signInModalOpen} handleClose={closeModal} />
+            )}
           </div>
         </div>
       </section>

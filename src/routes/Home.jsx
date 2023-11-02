@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import Modal from "../components/Modal/SignInModal";
+import Modal from "../components/Modals/SignInModal";
 import AnimatedTextWord from "../components/AnimatedTextWord";
-import Footer from "../components/Footer";
+import Footer from "../components/Content/Footer";
 
 function Home() {
   const [signInOpen, setSignInOpen] = useState(false);
