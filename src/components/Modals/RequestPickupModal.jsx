@@ -3,8 +3,8 @@ function RequestPickupModal() {
     locationAddress: "3033 24th St. San Francisco, CA 94110",
   }
   return (
-    <div className="w-full items-center justify-center text-center">
-      <div className="bg-white w-full h-[40vh] gap-p flex flex-col">
+    <div className="w-full absolute items-center justify-center text-center">
+      <div className="bg-white w-full gap-1 flex flex-col">
         <fieldset className="text-2xl py-3">Request Pickup</fieldset>
         <form className="flex flex-col px-3 w-full">
           <div className="gap-3">

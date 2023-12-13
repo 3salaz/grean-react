@@ -10,6 +10,7 @@ import Landing from "./routes/Landing";
 import Navbar from "./components/Navbar";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import Admin from "./components/Admin/Admin";
+import Contact from "./routes/Contact";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
               </ProtectedRoute>
             }
           ></Route>
+          <Route path="/contact" element={<Contact />}></Route>
           <Route path="/admin" element={<Admin />}></Route>
         </Routes>
       </div>

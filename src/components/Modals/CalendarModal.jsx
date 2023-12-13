@@ -1,44 +1,31 @@
 import { motion } from "framer-motion";
+import { useState } from "react"
+import Calendar from "react-calendar"
+import "react-calendar/dist/Calendar.css"
+import Backdrop from "../Backdrop";
 
 function CalendarModal() {
+  const [value, onChange] = useState(new Date())
+  const month = value.getMonth()
+  console.log(month)
   return (
-    <motion.div className="rounded-lg">
-      <div className=" w-full">
-        <div className="p-6 bg-grean">
-          <div className="text-4xl text-center">October<span className="text-sm">2023</span></div>
-          <div className="text-center">22nd-28th </div>
-          <div className="absolute left-10">
-            <ion-icon size="large" name="arrow-back-circle-outline"></ion-icon>
-          </div>
-          <div className="absolute right-10 h-full">
-            arrow_back
-          </div>
-        </div>
-        <div className="bg-white w-full flex items-center justify-between px-2">
 
-          <div>Monday</div>
-          <div>Tuesday</div>
-          <div>Wednesday</div>
-          <div>Thursday</div>
-          <div>Friday</div>
-          <div>Saturday</div>
-        </div>
-        <hr ></hr>
-        <div className="bg-white w-full flex items-center justify-between px-2">
-          <div className="flex flex-col border-1 border-black border px-2">
-            22nd
-          </div>
-          <div>23rd</div>
-          <div>24th</div>
-          <div>25th</div>
-          <div>26th</div>
-          <div>27th</div>
-          <div>28th</div>
-          <section>
+    
+    <motion.div className="rounded-lg  flex flex-col items-center justify-center z-[100]">
+      <label for="start">Start date:</label>
 
-          </section>
+<input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31" />
+        <div className="bg-grean p-4 py-8 text-center">
+          <div className="flex flex-col">
+            <div>Pickup Time</div>
+            <div className="font--bold">3:00pm</div>
+            <div>
+              <div className="text-xl">2624 3rd Street</div>
+              <div>San Francisco, CA 94107</div>
+            </div>
+          </div>
+          <button className="bg-orange px-3 rounded-full">Directions</button>
         </div>
-      </div>
     </motion.div>
   );
 }
