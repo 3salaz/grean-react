@@ -12,95 +12,199 @@ function AccountTab() {
   const [state, setState] = useState(String);
   const [venmoUsername, setVenmoUsername] = useState(String);
   const handleSubmit = async () => {
-    console.log("hello");
+    console.log(user)
   };
 
   return (
-    <div className="mx-auto max-w-[400px] gap-2 border-4 bg-white border-grean rounded-md drop-shadow-xl h-[500px]">
-      <div className="flex flex-col items-center justify-between py-4 h-full">
-        <div className="flex items-center justify-center gap-4">
-          <img
-            className="rounded-full basis-1/4"
-            src={user.photoURL}
-            alt="placeholder"
-          ></img>
-          <h2 className="rounded-full basis-3/4 text-slate-800 text-2xl text-left">
-            {user.displayName}
-          </h2>
-        </div>
-        <form className="container flex flex-col items-center flex-wrap">
-          <div className="flex flex-col gap-1 justify-center">
+    <section className="w-full h-[82svh] bg-black bg-opacity-40 bg-blur-10 absolute top-0 flex items-center justify-center">
+      {/* Card */}
+      <main className="container mx-auto max-w-[650px] h-full overflow-scroll flex items-center justify-center md:py-4">
+        <div className="bg-white w-full h-full overflow-scroll md:rounded-lg">
+          <header className="w-full flex items-center justify-center gap-3 py-2">
+            <img
+              className="rounded-full w-20"
+              alt="placeholder"
+              src={user.photoURL}
+            ></img>
             <div>
-              <label htmlFor="IsBusiness?">Are you a business: </label>
-              <input
-                onChange={(e) => {
-                  setIsBusiness(e.target.checked);
-                }}
-                className="border-2 border-grean"
-                type="checkbox"
-              />
+              <h2 className="text-lg font-bold text-grean">
+                {user.displayName}
+              </h2>
+              <p className="text-sm bg-grean text-white font-bold px-4 py-2 rounded-xl">
+                Users ID:{user.uid}
+              </p>
             </div>
-            <hr />
-            {console.log(isBusiness)}
-            {isBusiness ? (
-              <div>
-                <h3 className="text-center font-bold">Business Address</h3>
-                <div>
-                  <label htmlFor="address">Address 1: </label>
-                  <input
-                    onChange={(e) => setAddress1(e.target.value)}
-                    className="border-2 border-grean"
-                    type="text"
-                    placeholder="1240 3rd Street"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="address">Address 2: </label>
-                  <input
-                    onChange={(e) => setAddress2(e.target.value)}
-                    className="border-2 border-grean"
-                    type="text"
-                    placeholder="Doe"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="city">City </label>
-                  <input
-                    onChange={(e) => setCity(e.target.value)}
-                    className="border-2 border-grean"
-                    type="text"
-                    placeholder="San Francisco"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="state">State </label>
-                  <input
-                    onChange={(e) => setState(e.target.value)}
-                    className="border-2 border-grean"
-                    type="text"
-                    placeholder="Ca"
-                  />
+          </header>
+          <section className="flex flex-col items-center justify-between drop-shadow-lg mx-auto py-4">
+            <form className="container mx-auto flex flex-col items-center flex-wrap">
+              <div className="py-2">
+                <h2 className="text-base font-semibold leading-7 text-gray-900">
+                  Personal Information
+                </h2>
+                <p className="text-sm leading-6 text-gray-600">
+                  Use a permanent address where you can receive mail.
+                </p>
+
+                <div className="grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-6">
+                  <div className="sm:col-span-3">
+                    <label
+                      htmlFor="first-name"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      First name
+                    </label>
+                    <div className="mt-2">
+                      <input
+                        type="text"
+                        name="first-name"
+                        id="first-name"
+                        autoComplete="given-name"
+                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="sm:col-span-3">
+                    <label
+                      htmlFor="last-name"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      Last name
+                    </label>
+                    <div className="mt-2">
+                      <input
+                        type="text"
+                        name="last-name"
+                        id="last-name"
+                        autoComplete="family-name"
+                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="sm:col-span-6">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      Email address
+                    </label>
+                    <div className="mt-2">
+                      <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        autoComplete="email"
+                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="sm:col-span-6">
+                    <div className="w-full py-4  text-center flex items-center justify-center flex-col">
+                      <div className="w-full bg-grean rounded-md py-2">
+                        <div className="">
+                          <label htmlFor="IsBusiness?">
+                            Are you a business?{" "}
+                          </label>
+                          <input
+                            onChange={(e) => {
+                              setIsBusiness(e.target.checked);
+                            }}
+                            className="border-2 border-grean"
+                            type="checkbox"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col-span-full">
+                    <label
+                      htmlFor="street-address"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      Street address
+                    </label>
+                    <div className="mt-2">
+                      <input
+                        type="text"
+                        name="street-address"
+                        id="street-address"
+                        autoComplete="street-address"
+                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="sm:col-span-2 sm:col-start-1">
+                    <label
+                      htmlFor="city"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      City
+                    </label>
+                    <div className="mt-2">
+                      <input
+                        type="text"
+                        name="city"
+                        id="city"
+                        autoComplete="address-level2"
+                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="sm:col-span-2">
+                    <label
+                      htmlFor="region"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      State / Province
+                    </label>
+                    <div className="mt-2">
+                      <input
+                        type="text"
+                        name="region"
+                        id="region"
+                        autoComplete="address-level1"
+                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="sm:col-span-2">
+                    <label
+                      htmlFor="postal-code"
+                      className="block text-sm font-medium leading-6 text-gray-900"
+                    >
+                      ZIP / Postal code
+                    </label>
+                    <div className="mt-2">
+                      <input
+                        type="text"
+                        name="postal-code"
+                        id="postal-code"
+                        autoComplete="postal-code"
+                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      />
+                    </div>
+                  </div>
+                  <button
+                    type="submit"
+                    className="rounded-md bg-orange px-2 p-1 mt-2"
+                    onClick={handleSubmit}
+                  >
+                    Save
+                  </button>
                 </div>
               </div>
-            ) : (
-              <div>Hello</div>
-            )}
-          </div>
-          <button
-            type="submit"
-            className="rounded-md bg-orange px-2 p-1 mt-2"
-            onClick={handleSubmit}
-          >
-            Save
-          </button>
-        </form>
-        <h4 className="text-xl">3salaz Development</h4>
-        <p className="text-sm bg-grean text-white font-bold px-4 py-2 rounded-xl">
-          Users ID:{user.email}
-        </p>
-        {/* <Link to="/settings" className="rounded-xl bg-grean text-white p-2">Settings</Link> */}
-      </div>
-    </div>
+            </form>
+            {/* Account Info */}
+          </section>
+        </div>
+      </main>
+    </section>
   );
 }
 

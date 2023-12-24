@@ -1,10 +1,10 @@
-import logo from "../logo.png";
-import avatar from "../avatar.svg";
+import logo from "../../logo.png";
+import avatar from "../../avatar.svg";
 import { motion, useCycle } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
-import { UserAuth } from "../context/AuthContext";
+import { UserAuth } from "../../context/AuthContext";
 import { useState } from "react";
-import SignUpModal from "./Modals/SignUpModal";
+import SignUpModal from "../Modals/SignUpModal";
 
 function Navbar() {
   const { user, logOut } = UserAuth();
@@ -26,7 +26,7 @@ function Navbar() {
   };
 
   return (
-    <nav className="bg-grean sticky top-0 inset-x-0 h-[8vh] z-50">
+    <nav className="bg-grean sticky top-0 inset-x-0 h-[8svh] z-50">
       {/* signUp modal */}
       {signUpOpen && (
         <SignUpModal
@@ -88,7 +88,7 @@ function Navbar() {
           <div className="hidden sm:ml-6 sm:block">
             <div className="flex space-x-4">
               <Link
-                to="/landing"
+                to="/"
                 className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
                 aria-current="page"
               >
@@ -98,7 +98,7 @@ function Navbar() {
                 to="/about"
                 className="text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
               >
-                Team
+                About
               </Link>
               <Link
                 to="/services"
