@@ -11,7 +11,7 @@ function RequestPickupModal({ handleClose }) {
 
   const { user } = UserAuth();
   return (
-    <div className="w-full absolute top-0 h-full bg-black bg-opacity-40 bg-blur-10 px-2 z-20 flex justify-center items-center">
+    <div id="requestPickupModal" className="w-full  absolute top-0 h-full bg-black bg-opacity-90 px-2 z-20 flex justify-center items-center">
       <main className="bg-white max-w-[500px] container rounded-md drop-shadow-2xl">
         <form className="w-full py-4 container flex flex-col items-center justify-center gap-3 h-full"
           action="submit"

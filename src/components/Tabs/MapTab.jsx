@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import RequestPickupModal from "../Modals/RequestPickupModal";
 import React, { useRef, useState } from "react";
-import { Calendar } from "antd";
 import CalendarModal from "../Modals/CalendarModal";
 
 function MapTab() {
@@ -20,7 +19,7 @@ function MapTab() {
   // const openPickupModal = () => setRequestPickupModalOpen(true);
 
   return (
-    <section className="w-full">
+    <div id="mapTab">
       {requestPickupModalOpen && (
         <RequestPickupModal
           modalOpen={requestPickupModalOpen}
@@ -33,51 +32,65 @@ function MapTab() {
           handleClose={closeCalendarModal}
         />
       )}
-      <div className="absolute container mx-auto bottom-10 z-10">
-        <div className="max-w-[650px] flex justify-end m-auto rounded-md drop-shadow-xl">
-          <div className="flex justify-end items-end w-full gap-4 px-5">
-            <div className="flex flex-col w-full justify-between gap-6">
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={() =>
-                  requestPickupModalOpen
-                    ? closePickupModal()
-                    : openPickupModal()
-                }
-                className="flex items-center justify-center rounded-full bg-grean text-yellow-200 border border-grean-300 p-2 px-3 basis-4/5 "
-              >
-                Request Pickup
-              </motion.button>
-            </div>
+      <div
+        id="mapModals"
+        className="absolute w-full bottom-10 z-10 flex items-center justify-center"
+      >
+        <div className="container mx-auto">
+          <div className="max-w-[650px] flex justify-end m-auto rounded-md drop-shadow-xl">
+            <div className="flex justify-end items-end w-full gap-4 px-5">
+              <div className="flex flex-col w-full justify-between gap-6">
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={() =>
+                    requestPickupModalOpen
+                      ? closePickupModal()
+                      : openPickupModal()
+                  }
+                  className="flex items-center justify-center rounded-full bg-grean text-yellow-200 border border-grean-300 p-2 px-3 basis-4/5 "
+                >
+                  Request Pickup
+                </motion.button>
+              </div>
 
-            <div className="flex flex-col gap-2 basis-1/5 items-center justify-center">
-              <motion.button
-                className="z-10 bg-grean text-yellow-200 rounded-full p-2 flex items-center justify-center drop-shadow-lg shadow-white"
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <ion-icon size="large" name="list-outline"></ion-icon>
-              </motion.button>
-              <motion.button
-                className="rounded-md bg-white bg-green-300 p-2 px-3 aspect-square border border-yellow-200 flex items-center justify-center drop-shadow-xl"
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={() =>
-                  calendarModalOpen ? closeCalendarModal() : openCalendarModal()
-                }
-              >
-                <ion-icon
-                  size="large"
-                  name="calendar-number-outline"
-                ></ion-icon>
-              </motion.button>
-              <div></div>
+              <div className="flex flex-col gap-2 basis-1/5 items-center justify-center">
+                <motion.button
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.9 }}
+                  type="button"
+                  className="rounded-md p-1 bg-white text-red-500 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 flex items-center justify-center"
+                >
+                  <span className="sr-only">View notifications</span>
+                  <ion-icon
+                    size="large" name="notifications-outline">
+                    
+                  </ion-icon>
+                  <span className="text-white bg-red-500 rounded-full w-6 h-6  absolute top-[-12px] right-9 flex items-center justify-center">2</span>
+                </motion.button>
+
+                <motion.button
+                  className="rounded-md bg-white bg-green-300 text-grean  aspect-square border border-yellow-200 flex items-center justify-center drop-shadow-xl w-10 h-10"
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={() =>
+                    calendarModalOpen
+                      ? closeCalendarModal() 
+                      : openCalendarModal()
+                  }
+                >
+                  <ion-icon
+                    size="large"
+                    name="calendar-number-outline"
+                  ></ion-icon>
+                </motion.button>
+                <div></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 

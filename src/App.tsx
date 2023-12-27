@@ -25,7 +25,7 @@ function App() {
   return (
     <AuthContextProvider>
       <Navbar />
-      <div className="absolute top-[8svh] w-full bg-grean">
+      <main className="absolute top-[8svh] w-full bg-grean">
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route
@@ -41,7 +41,7 @@ function App() {
           <Route path="/contact" element={<Contact />}></Route>
           <Route path="/admin" element={<Admin />}></Route>
         </Routes>
-      </div>
+      </main>
     </AuthContextProvider>
   );
 }

@@ -26,16 +26,24 @@ function StatsTab() {
       // Handle any errors
     });
   return (
-    <section className="w-full h-[82svh] bg-black bg-opacity-40 bg-blur-10 border-t-transparent border-b-transparent border-l-orange border-r-orange border-2 absolute top-0 flex items-center justify-center">
+    <section id="statsTab" className="w-full h-[82svh] bg-black bg-opacity-40 bg-blur-10 absolute top-0 flex items-center justify-center">
       {/* Card */}
       <main className="container mx-auto max-w-[650px] h-full overflow-scroll flex items-center justify-center md:py-4 md:rounded-lg">
         <div className="bg-white w-full h-full overeflow-scroll md:rounded-lg">
-          <header className="w-full flex items-center justify-center gap-3 bg-white py-2 rounded-lg">
-            <img
-              id="statsImg"
-              className="rounded-full w-full max-w-[650px]"
+          <header className="w-full flex items-center justify-center gap-3 bg-white p-2 rounded-lg">
+          <img
+              className="rounded-full w-20"
               alt="placeholder"
+              src={user.photoURL}
             ></img>
+            <div>
+              <h2 className="text-lg font-bold text-grean">
+                {user.displayName}
+              </h2>
+              <p className="text-sm bg-grean text-white font-bold px-4 py-2 rounded-xl">
+                Users ID:{user.uid}
+              </p>
+            </div>
           </header>
           <section className="px-4 flex flex-col gap-3 pt-4">
             <div className="w-full flex flex-col gap-4">

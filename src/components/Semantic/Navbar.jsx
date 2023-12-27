@@ -26,7 +26,7 @@ function Navbar() {
   };
 
   return (
-    <nav className="bg-grean sticky top-0 inset-x-0 h-[8svh] z-50">
+    <nav id="navbar" className="bg-grean sticky top-0 inset-x-0 h-[8svh] z-50">
       {/* signUp modal */}
       {signUpOpen && (
         <SignUpModal
@@ -118,15 +118,6 @@ function Navbar() {
 
         {/* Account Nav / Alerts */}
         <div className="absolute inset-y-0 right-2 flex gap-2 items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-          <motion.button
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.9 }}
-            type="button"
-            className="rounded-full w-10 h-10 p-1 bg-white text-red-500 hover:text-[#75B657] focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 flex items-center justify-center"
-          >
-            <span className="sr-only">View notifications</span>
-            <ion-icon size="large" name="notifications-outline"><span className="z-10">2</span></ion-icon>
-          </motion.button>
 
           {/* <!-- Profile dropdown --> */}
           {user ? (

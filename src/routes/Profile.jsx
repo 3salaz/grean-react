@@ -30,8 +30,10 @@ function Profile() {
       route: "/account",
     },
   ];
+  
   const [active, setActive] = useState(1);
   const toggleComponent = useCycle(false, true);
+
   useEffect(() => {
     console.log(user);
     const setUpUser = async () => {
@@ -53,7 +55,7 @@ function Profile() {
   }, [user]);
 
   return (
-    <div>
+    <section className="w-full">
       <Map />
       <>
         {(() => {
@@ -69,13 +71,10 @@ function Profile() {
           }
         })()}
 
-        <div className="bg-slate-800 z-20 px-4 bottom-0 fixed w-full rounded-t-lg border-t-[2px] border-t-white">
-          <ul className="flex relative justify-center">
-            <span
-              className={`bg-[#75B657] duration-500 ${MenuItems[active].dis} border-4 border-white h-16 w-16 absolute
-     -top-5 rounded-full`}
-            >
-              <span className="w-3.5 h-3.5 absolute top-4 -left-[18px] rounded-tr-[5px] shadow-myshadow1 bg-transparent"></span>
+        <footer className="bg-slate-800 z-20 px-4 bottom-0 fixed w-full rounded-t-lg border-t-[2px] border-t-white">
+          <ul id="tabs" className="flex relative justify-center">
+            <span className={`bg-grean duration-500 ${MenuItems[active].dis} border-4 border-white h-16 w-16 absolute -top-5 rounded-full`}>
+              <span className="w-3.5 h-3.5 absolute top-4 -left-[18px] rounded-tr-[3px] shadow-myshadow1 bg-transparent"></span>
               <span className="w-3.5 h-3.5 absolute top-4 -right-[18px] rounded-tl-[5px] shadow-myshadow2 bg-transparent"></span>
             </span>
             {MenuItems.map((menu, i) => (
@@ -106,9 +105,9 @@ function Profile() {
               </li>
             ))}
           </ul>
-        </div>
+        </footer>
       </>
-    </div>
+    </section>
   );
 }
 

@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 
 function CalendarModal( {handleClose}) {
   return (
-    <div className="w-full absolute top-0 h-full bg-black bg-opacity-40 bg-blur-10 px-2 z-20 flex justify-center items-center">
+    <div id="calendarModal" className="w-full absolute top-0 h-full bg-black bg-opacity-90 bg-blur-10 px-2 z-20 flex justify-center items-center">
     <main className="bg-white max-w-[500px] container rounded-md drop-shadow-2xl">
       <motion.div className="rounded-lg  flex flex-col items-center justify-center z-[100]">
-      <label for="start">Start date:</label>
+      <label htmlFor="start">Start date:</label>
 
       <input
         type="date"
