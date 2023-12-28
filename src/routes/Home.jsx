@@ -10,7 +10,7 @@ function Home() {
   const openModal = () => setSignInModalOpen(true);
   const { user } = UserAuth();
   return (
-    <div className="w-full h-[92vh]">
+    <div className="w-full h-[92svh] bg-black bg-opacity-40 bg-blur-10 absolute top-0 flex items-center justify-center">
       <section className="h-full flex justify-center items-center">
         <img
           className="w-full h-full absolute object-cover blur-sm"

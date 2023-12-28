@@ -74,7 +74,7 @@ function Navbar() {
           <div className="flex flex-shrink-0 items-center">
             <Link to="/">
               <img
-                className="sm:block h-9 w-auto lg:hidden rounded-full"
+                className="sm:block h-10 w-10 lg:hidden rounded-full"
                 src={logo}
                 alt="Company logo"
               ></img>
@@ -117,7 +117,7 @@ function Navbar() {
         </div>
 
         {/* Account Nav / Alerts */}
-        <div className="absolute inset-y-0 right-2 flex gap-2 items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+        <div className="absolute inset-y-0 right-2 flex gap-2 items-center sm:static sm:inset-auto sm:ml-6 sm:pr-0">
 
           {/* <!-- Profile dropdown --> */}
           {user ? (

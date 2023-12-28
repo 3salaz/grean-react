@@ -26,12 +26,15 @@ function StatsTab() {
       // Handle any errors
     });
   return (
-    <section id="statsTab" className="w-full h-[82svh] bg-black bg-opacity-40 bg-blur-10 absolute top-0 flex items-center justify-center">
+    <section
+      id="statsTab"
+      className="w-full h-[82svh] bg-black bg-opacity-40 bg-blur-10 absolute top-0 flex items-center justify-center"
+    >
       {/* Card */}
       <main className="container mx-auto max-w-[650px] h-full overflow-scroll flex items-center justify-center md:py-4 md:rounded-lg">
-        <div className="bg-white w-full h-full overeflow-scroll md:rounded-lg">
+        <div className="bg-white w-full h-full md:rounded-lg z-20">
           <header className="w-full flex items-center justify-center gap-3 bg-white p-2 rounded-lg">
-          <img
+            <img
               className="rounded-full w-20"
               alt="placeholder"
               src={user.photoURL}
@@ -45,6 +48,7 @@ function StatsTab() {
               </p>
             </div>
           </header>
+          <div className="flex flex-col flex-end">
           <section className="px-4 flex flex-col gap-3 pt-4">
             <div className="w-full flex flex-col gap-4">
               <section className="w-full bg-orange py-2 rounded-md">
@@ -111,6 +115,7 @@ function StatsTab() {
               </a>
             </p>
           </footer>
+          </div>
         </div>
       </main>
     </section>

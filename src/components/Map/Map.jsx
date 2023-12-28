@@ -28,111 +28,111 @@ function Map() {
         mapStyle={"mapbox://styles/3salaz/cli6bc4e000m201rf0dfp3oyh"}
       >
         <Marker latitude={37.656487} longitude={-122.388322}>
-          <div className="flex flex-col items-center justify-center rounded-lg p-1 drop-shadow-lg border-grean text-grean border-2 slate-800 bg-white">
+          <div className="flex flex-col items-center justify-center rounded-full p-1 drop-shadow-xl border-grean text-grean border-2 hover:text-orange hover:border-orange slate-800 bg-white">
             <ion-icon
               className="w-full h-full flex items-center justify-center"
               name="pin-sharp"
-              size="large"
+              size="small"
             ></ion-icon>
           </div>
         </Marker>
 
         <Marker latitude={37.756487} longitude={-122.388322}>
-          <div className="flex flex-col items-center justify-center rounded-lg p-1 drop-shadow-lg border-grean text-grean border-2 slate-800 bg-white">
+          <div className="flex flex-col items-center justify-center rounded-full p-1 drop-shadow-xl border-grean text-grean border-2 hover:text-orange hover:border-orange slate-800 bg-white">
             <ion-icon
               className="w-full h-full flex items-center justify-center"
               name="pin-sharp"
-              size="large"
+              size="small"
             ></ion-icon>
           </div>
         </Marker>
 
         <Marker latitude={37.56487} longitude={-122.388322}>
-          <div className="flex flex-col items-center justify-center rounded-lg p-1 drop-shadow-lg border-grean text-grean border-2 slate-800 bg-white">
+          <div className="flex flex-col items-center justify-center rounded-full p-1 drop-shadow-xl border-grean text-grean border-2 hover:text-orange hover:border-orange slate-800 bg-white">
             <ion-icon
               className="w-full h-full flex items-center justify-center"
               name="pin-sharp"
-              size="large"
+              size="small"
             ></ion-icon>
           </div>
         </Marker>
 
         <Marker latitude={37.686487} longitude={-122.388322}>
-          <div className="flex flex-col items-center justify-center rounded-lg p-1 drop-shadow-lg border-grean text-grean border-2 slate-800 bg-white">
+          <div className="flex flex-col items-center justify-center rounded-full p-1 drop-shadow-xl border-grean text-grean border-2 hover:text-orange hover:border-orange slate-800 bg-white">
             <ion-icon
               className="w-full h-full flex items-center justify-center"
               name="pin-sharp"
-              size="large"
+              size="small"
             ></ion-icon>
           </div>
         </Marker>
 
         <Marker latitude={37.756487} longitude={-122.388322}>
-          <div className="flex flex-col items-center justify-center rounded-lg p-1 drop-shadow-lg border-grean text-grean border-2 slate-800 bg-white">
+          <div className="flex flex-col items-center justify-center rounded-full p-1 drop-shadow-xl border-grean text-grean border-2 hover:text-orange hover:border-orange slate-800 bg-white">
             <ion-icon
               className="w-full h-full flex items-center justify-center"
               name="pin-sharp"
-              size="large"
+              size="small"
             ></ion-icon>
           </div>
         </Marker>
 
         <Marker latitude={37.756487} longitude={-122.388322}>
-          <div className="flex flex-col items-center justify-center rounded-lg p-1 drop-shadow-lg border-grean text-grean border-2 slate-800 bg-white">
+          <div className="flex flex-col items-center justify-center rounded-full p-1 drop-shadow-xl border-grean text-grean border-2 hover:text-orange hover:border-orange slate-800 bg-white">
             <ion-icon
               className="w-full h-full flex items-center justify-center"
               name="pin-sharp"
-              size="large"
+              size="small"
             ></ion-icon>
           </div>
         </Marker>
 
         <Marker latitude={37.756487} longitude={-122.488322}>
-          <div className="flex flex-col items-center justify-center rounded-lg p-1 drop-shadow-lg border-grean text-grean border-2 slate-800 bg-white">
+          <div className="flex flex-col items-center justify-center rounded-full p-1 drop-shadow-xl border-grean text-grean border-2 hover:text-orange hover:border-orange slate-800 bg-white">
             <ion-icon
               className="w-full h-full flex items-center justify-center"
               name="pin-sharp"
-              size="large"
+              size="small"
             ></ion-icon>
           </div>
         </Marker>
 
         <Marker latitude={37.756487} longitude={-122.428322}>
-          <div className="flex flex-col items-center justify-center rounded-lg p-1 drop-shadow-lg border-grean text-grean border-2 slate-800 bg-white">
+          <div className="flex flex-col items-center justify-center rounded-full p-1 drop-shadow-xl border-grean text-grean border-2 hover:text-orange hover:border-orange slate-800 bg-white">
             <ion-icon
               className="w-full h-full flex items-center justify-center"
               name="pin-sharp"
-              size="large"
+              size="small"
             ></ion-icon>
           </div>
         </Marker>
 
         <Marker latitude={37.756487} longitude={-122.415322}>
-          <div className="flex flex-col items-center justify-center rounded-lg p-1 drop-shadow-lg border-grean text-grean border-2 slate-800 bg-white">
+          <div className="flex flex-col items-center justify-center rounded-full p-1 drop-shadow-xl border-grean text-grean border-2 hover:text-orange hover:border-orange slate-800 bg-white">
             <ion-icon
               className="w-full h-full flex items-center justify-center"
               name="pin-sharp"
-              size="large"
+              size="small"
             ></ion-icon>
           </div>
         </Marker>
 
         <Marker latitude={37.746487} longitude={-122.415322}>
-          <div className="flex flex-col items-center justify-center rounded-lg p-1 drop-shadow-lg border-grean text-grean border-2 slate-800 bg-white">
+          <div className="flex flex-col items-center justify-center rounded-full p-1 drop-shadow-xl border-grean text-grean border-2 hover:text-orange hover:border-orange slate-800 bg-white">
             <ion-icon
               className="w-full h-full flex items-center justify-center"
               name="pin-sharp"
-              size="large"
+              size="small"
             ></ion-icon>
           </div>
         </Marker>
 
         <Marker latitude={37.796487} longitude={-122.415322}>
-          <div className="flex flex-col items-center justify-center rounded-lg p-1 drop-shadow-lg border-grean text-grean border-2 slate-800 bg-white">
+          <div className="flex flex-col items-center justify-center rounded-full p-1 drop-shadow-xl border-grean text-grean border-2 hover:text-orange hover:border-orange slate-800 bg-white">
             <ion-icon
               className="w-full h-full flex items-center justify-center"
               name="pin-sharp"
-              size="large"
+              size="small"
             ></ion-icon>
           </div>
         </Marker>
