@@ -4,57 +4,38 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
 import { GoogleButton } from "react-google-button";
-import { addDoc, collection, doc, getDoc } from "firebase/firestore";
-import { db } from "../../firebase";
+import { toast } from "react-hot-toast";
+
 
 function SignUpModal({ handleClose }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { createUser, googleSignIn, user } = UserAuth();
+  const { createUser, googleSignIn, user} = UserAuth();
   const navigate = useNavigate();
-
-  useEffect((user, navigate) => {
-    if (user != null) {
-      const docRef = doc(db, "users", user.uid);
-      const docSnap = getDoc(docRef);
-      if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
-      } else {
-        // docSnap.data() will be undefined in this case
-        console.log("No such document!");
-      }
-      navigate("/profile");
-    }
-  }, []);
+  useEffect(() => {
+  }, [user]);
 
   const handleGoogleSignIn = async () => {
     try {
       await googleSignIn();
       navigate("/profile");
-      handleClose()
+      handleClose();
     } catch (e) {
-      console.log(e);
+      console.log(error);
     }
   };
 
   const handleSignUp = async (e) => {
-    const usersRef = collection(db, "users");
     e.preventDefault();
     setError("");
     try {
-      await Promise.all([
-        createUser(email, password),
-        addDoc(usersRef, {
-          email: email,
-          userId: user.uid
-        }),
-      ]);
-      handleClose()
-      navigate("/profile");
+        await createUser(email, password)
+        navigate('/profile');
+        handleClose();
     } catch (e) {
       setError(e.message);
-      console.log(setError);
+      toast(setError);
     }
   };
 

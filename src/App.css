@@ -1,2 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+.no-scroll {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+.no-scroll::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
 

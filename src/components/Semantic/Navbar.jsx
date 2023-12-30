@@ -1,10 +1,10 @@
-import logo from "../logo.png";
-import avatar from "../avatar.svg";
+import logo from "../../logo.png";
+import avatar from "../../avatar.svg";
 import { motion, useCycle } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
-import { UserAuth } from "../context/AuthContext";
+import { UserAuth } from "../../context/AuthContext";
 import { useState } from "react";
-import SignUpModal from "./Modal/SignUpModal";
+import SignUpModal from "../Modals/SignUpModal";
 
 function Navbar() {
   const { user, logOut } = UserAuth();
@@ -26,7 +26,7 @@ function Navbar() {
   };
 
   return (
-    <nav className="bg-grean sticky top-0 inset-x-0 h-[8vh] z-50">
+    <nav id="navbar" className="bg-grean sticky top-0 inset-x-0 h-[8svh] z-50">
       {/* signUp modal */}
       {signUpOpen && (
         <SignUpModal
@@ -74,7 +74,7 @@ function Navbar() {
           <div className="flex flex-shrink-0 items-center">
             <Link to="/">
               <img
-                className="sm:block h-9 w-auto lg:hidden rounded-full"
+                className="sm:block h-10 w-10 lg:hidden rounded-full"
                 src={logo}
                 alt="Company logo"
               ></img>
@@ -88,7 +88,7 @@ function Navbar() {
           <div className="hidden sm:ml-6 sm:block">
             <div className="flex space-x-4">
               <Link
-                to="/landing"
+                to="/"
                 className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
                 aria-current="page"
               >
@@ -98,7 +98,7 @@ function Navbar() {
                 to="/about"
                 className="text-white hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
               >
-                Team
+                About
               </Link>
               <Link
                 to="/services"
@@ -117,16 +117,7 @@ function Navbar() {
         </div>
 
         {/* Account Nav / Alerts */}
-        <div className="absolute inset-y-0 right-2 flex gap-2 items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-          <motion.button
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.9 }}
-            type="button"
-            className="rounded-full w-10 h-10 p-1 bg-white text-red-500 hover:text-[#75B657] focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 flex items-center justify-center"
-          >
-            <span className="sr-only">View notifications</span>
-            <ion-icon size="large" name="notifications-outline"></ion-icon>
-          </motion.button>
+        <div className="absolute inset-y-0 right-2 flex gap-2 items-center sm:static sm:inset-auto sm:ml-6 sm:pr-0">
 
           {/* <!-- Profile dropdown --> */}
           {user ? (
@@ -154,7 +145,7 @@ function Navbar() {
             <motion.button
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.9 }}
-              className="bg-red-400 rounded-sm"
+              className="bg-red-600 rounded-sm"
               onClick={() => (signUpOpen ? closeSignUp() : openSignUp())}
             >
               <div className="w-16 p-1 text-white  flex items-center justify-center font-bold text-sm">
@@ -187,13 +178,13 @@ function Navbar() {
             </div>
             <div className="space-y-5 pt-16">
               <Link to="/">
-                <a
+                <div
                   href="#landing"
                   className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
                   aria-current="page"
                 >
                   Home
-                </a>
+                </div>
               </Link>
               <Link
                 to="/team"

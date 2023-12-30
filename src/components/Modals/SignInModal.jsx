@@ -4,22 +4,22 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
 import { GoogleButton } from "react-google-button";
+import toast, { Toaster } from "react-hot-toast";
+const notify = () => toast("Here is your toast.");
 
-
-function SignInModal({ handleClose}) {
+function SignInModal({ handleClose }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const {signIn, googleSignIn, user } = UserAuth();
+  const { signIn, googleSignIn } = UserAuth();
   const navigate = useNavigate();
-
   const handleGoogleSignIn = async () => {
     try {
-      await googleSignIn();
       navigate("/profile");
-      handleClose()
-    } catch (e) {
-      console.log(e);
+      await googleSignIn();
+      handleClose();
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -28,10 +28,11 @@ function SignInModal({ handleClose}) {
     setError("");
     try {
       await signIn(email, password);
-      handleClose()
+      handleClose();
     } catch (e) {
       setError(e.message);
       console.log(setError);
+      notify();
     }
   };
 
@@ -44,7 +45,7 @@ function SignInModal({ handleClose}) {
   const dropIn = {
     hidden: {
       y: "-100vh",
-      opacity: 0
+      opacity: 0,
     },
     visible: {
       y: "0",
@@ -53,17 +54,20 @@ function SignInModal({ handleClose}) {
         duration: 0.1,
         type: "spring",
         damping: 20,
-        stiffness: 300
-      }
+        stiffness: 300,
+      },
     },
     exit: {
       y: "100vh",
-      opacity: 0
-    }
-  }
-  
+      opacity: 0,
+    },
+  };
+
   return (
     <Backdrop onClick={handleClose}>
+      <Toaster />
+      {error && <div className="error-message">{error}</div>}
+      <Toaster />
       <motion.div
         onClick={(e) => e.stopPropagation()}
         variants={dropIn}
@@ -77,11 +81,17 @@ function SignInModal({ handleClose}) {
             <div className="container max-w-3xl mx-auto bg-white rounded-md md:drop-shadow-lg">
               <div className="w-full p-4 py-4 rounded-md">
                 <div className="w-full flex items-end justify-end">
-                <motion.button
-                  whileHover={{ scale: 1.2 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="bg-red-500 stroke-slate-400 text-white rounded-xl p-1 w-8 h-8 flex justify-center text-center items-center" onClick={handleClose}>
-                    <ion-icon className="stroke-slate-500" size="large" name="close-circle-outline"></ion-icon>
+                  <motion.button
+                    whileHover={{ scale: 1.2 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="bg-red-500 stroke-slate-400 text-white rounded-xl p-1 w-8 h-8 flex justify-center text-center items-center"
+                    onClick={handleClose}
+                  >
+                    <ion-icon
+                      className="stroke-slate-500"
+                      size="large"
+                      name="close-circle-outline"
+                    ></ion-icon>
                   </motion.button>
                 </div>
                 <div className="mx-auto w-full">

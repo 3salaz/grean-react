@@ -4,37 +4,44 @@ import { AuthContextProvider } from "./context/AuthContext";
 
 // Routes
 import Profile from "./routes/Profile";
-import Landing from "./routes/Landing";
-import Settings from "./routes/Settings";
+import Home from "./routes/Home";
 
 // Components
-import Navbar from "./components/Navbar";
-import ProtectedRoute from "./components/ProtectedRoute";
-import Admin from "./components/Admin";
-
+import Navbar from "./components/Semantic/Navbar";
+import ProtectedRoute from "./routes/ProtectedRoute";
+import Admin from "./components/Admin/Admin";
+import Contact from "./routes/Contact";
+import About from "./routes/About";
+import Services from "./routes/Services";
+import { useCycle, motion } from "framer-motion";
+import AccountTab from "./components/Tabs/AccountTab";
+import MapTab from "./components/Tabs/MapTab";
+import StatsTab from "./components/Tabs/StatsTab";
+import { useState } from "react";
+import Account from "./routes/Account";
+import Stats from "./routes/Stats";
 
 function App() {
   return (
     <AuthContextProvider>
-      {/* <Preloader/> */}
       <Navbar />
-      <div className="h-full">
-      <Routes>
-        <Route path="/" element={<Landing />}></Route>
-        <Route
-          path="/profile"
-          element={
-            <ProtectedRoute>
-              <Profile />
-            </ProtectedRoute>
-          }
-        ></Route>
-        <Route
-          path="/admin"
-          element={<Admin />}></Route>
-        <Route path="/settings" element={<Settings />}></Route>
-      </Routes>
-      </div>
+      <main className="absolute top-[8svh] w-full bg-grean">
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          ></Route>
+          <Route path="/about" element={<About />}></Route>
+          <Route path="/services" element={<Services />}></Route>
+          <Route path="/contact" element={<Contact />}></Route>
+          <Route path="/admin" element={<Admin />}></Route>
+        </Routes>
+      </main>
     </AuthContextProvider>
   );
 }
