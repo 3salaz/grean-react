@@ -120,7 +120,7 @@ function AccountTab() {
                   </div>
                   {/* Business Info */}
                   {isBusiness && (
-                    <div className="grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-6">
+                    <div className="">
                       <div className="col-span-full">
                         <h2 className="text-base font-semibold leading-7 text-gray-900">
                           Buisness Information

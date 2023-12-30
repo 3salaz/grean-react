@@ -65,26 +65,23 @@ function SignInModal({ handleClose }) {
 
   return (
     <Backdrop onClick={handleClose}>
-      <Toaster />
-      {error && <div className="error-message">{error}</div>}
-      <Toaster />
       <motion.div
         onClick={(e) => e.stopPropagation()}
         variants={dropIn}
         initial="hidden"
         animate="visible"
         exit="exit"
-        className="h-screen w-full px-4"
+        className="h-[92vh] w-full px-4"
       >
         <div className="flex w-full justify-center items-center">
-          <div className="px-3 container h-[86vh] flex items-center justify-cente max-w-lg">
+          <div className="container h-full flex items-center justify-cente max-w-lg">
             <div className="container max-w-3xl mx-auto bg-white rounded-md md:drop-shadow-lg">
               <div className="w-full p-4 py-4 rounded-md">
                 <div className="w-full flex items-end justify-end">
                   <motion.button
                     whileHover={{ scale: 1.2 }}
                     whileTap={{ scale: 0.9 }}
-                    className="bg-red-500 stroke-slate-400 text-white rounded-xl p-1 w-8 h-8 flex justify-center text-center items-center"
+                    className="bg-red-500 stroke-slate-400 text-white rounded-md p-1 w-10 h-10 flex justify-center text-center items-center"
                     onClick={handleClose}
                   >
                     <ion-icon
