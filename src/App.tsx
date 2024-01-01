@@ -13,13 +13,6 @@ import Admin from "./components/Admin/Admin";
 import Contact from "./routes/Contact";
 import About from "./routes/About";
 import Services from "./routes/Services";
-import { useCycle, motion } from "framer-motion";
-import AccountTab from "./components/Tabs/AccountTab";
-import MapTab from "./components/Tabs/MapTab";
-import StatsTab from "./components/Tabs/StatsTab";
-import { useState } from "react";
-import Account from "./routes/Account";
-import Stats from "./routes/Stats";
 
 function App() {
   return (

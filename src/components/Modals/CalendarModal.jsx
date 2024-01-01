@@ -6,7 +6,7 @@ function CalendarModal({ handleClose }) {
       id="calendarModal"
       className="w-full absolute top-0 h-full bg-black bg-opacity-30 bg-blur-10 px-2 z-20 flex justify-center items-center"
     >
-      <div className="max-w-[600px] h-[96%] container drop-shadow-2xl rounded-lg text-white bg-grean border-white border-4">
+      <div className="max-w-[600px] h-[96%] container drop-shadow-2xl rounded-lg text-slate bg-white border-grean border-4">
         <motion.section className="h-full w-full flex flex-col items-center  justify-center z-[100] py-4">
           <header className="w-full flex gap-2 justify-start items-center pl-12">
             <section className="text-8xl font-bold">3</section>
@@ -15,19 +15,33 @@ function CalendarModal({ handleClose }) {
               <div>View Your Week Below ⬇️</div>
             </section>
           </header>
-          <main className="w-[88%] max-w-[88%] h-[48rem] flex gap-2 overflow-x-scroll snap-proximity snap-x no-scroll">
-            <section className="min-w-[88%] bg-slate-800 rounded-md snap-center shadow-xl py-4">
-              <div className="container flex items-center justify-center gap-3">
-                <div className="flex flex-col text-left">
-                  <div className="text-4xl">Tuesday</div>
+          <main className="w-[90%] max-w-[90%] h-[48rem] flex gap-2 overflow-x-scroll  snap-proximity snap-x no-scroll">
+            <section className="min-w-[90%] bg-slate-800 rounded-lg snap-center shadow-xl p-2">
+              <div className="w-full flex items-center justify-between px-4 gap-3 h-[30%] text-white">
+                <div className="flex flex-col text-left ">
+                  <div className="text-5xl text-orange">Tuesday</div>
                   <div className="text-2xl">January</div>
                 </div>
-                <div className="text-6xl">
-                  2<span className="text-sm">nd</span>
+                <div className="text-8xl">
+                  2<span className="text-lg">nd</span>
                 </div>
               </div>
-              <div>
-                <div className="bg-white h-20"></div>
+              <div className="w-full bg-white text-slate-800 rounded-md h-[60%]">
+                <div className="text-center flex flex-col gap-4">
+                  <div>
+                    <div className="text-3xl">Erik Salazar</div>
+                    <div className="text-2xl font-bold">3salaz</div>
+                    <div className="text-lg">2624 3rd Street</div>
+                    <div className="text-lg">San Francisco, Ca</div>
+                  </div>
+
+                  <div>
+                    <div className="text-5xl font-bold">3:45pm</div>
+                  </div>
+                  <div>
+                    <a href="google.com" className="text-xl text-orange underline">Directions</a>
+                  </div>
+                </div>
               </div>
             </section>
             <section className="min-w-[88%] bg-slate-800 rounded-md snap-center shadow-xl"></section>

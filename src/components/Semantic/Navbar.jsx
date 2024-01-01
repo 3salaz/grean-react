@@ -1,5 +1,5 @@
-import logo from "../../logo.png";
-import avatar from "../../avatar.svg";
+import logo from "../../assets/logo.png";
+import avatar from "../../assets/avatar.svg";
 import { motion, useCycle } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
@@ -143,9 +143,9 @@ function Navbar() {
             </div>
           ) : (
             <motion.button
-              whileHover={{ scale: 1.2 }}
+              whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="bg-red-600 rounded-sm"
+              className="bg-red-600 rounded-md p-2"
               onClick={() => (signUpOpen ? closeSignUp() : openSignUp())}
             >
               <div className="w-16 p-1 text-white  flex items-center justify-center font-bold text-sm">
@@ -177,22 +177,23 @@ function Navbar() {
               </Link>
             </div>
             <div className="space-y-5 pt-16">
-              <Link to="/">
-                <div
-                  href="#landing"
-                  className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
-                  aria-current="page"
-                >
-                  Home
-                </div>
+              <Link 
+                onClick={mobileNav} 
+                to="/"
+                href="#landing"
+                className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
+                aria-current="page">
+                    Home
               </Link>
               <Link
-                to="/team"
+                onClick={mobileNav}
+                to="/services"
                 className="text-white hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
               >
-                Team
+                Services
               </Link>
               <Link
+                onClick={mobileNav}
                 to="/about"
                 className="text-white hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
               >
@@ -200,6 +201,7 @@ function Navbar() {
               </Link>
 
               <Link
+                onClick={mobileNav}
                 to="/contact"
                 className="text-white hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
               >
