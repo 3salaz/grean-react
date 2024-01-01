@@ -1,5 +1,5 @@
-import logo from "../../logo.png";
-import avatar from "../../avatar.svg";
+import logo from "../../assets/logo.png";
+import avatar from "../../assets/avatar.svg";
 import { motion, useCycle } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";

@@ -4,14 +4,14 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import AnimatedTextWord from "../components/AnimatedTextWord";
 import SignInModal from "../components/Modals/SignInModal";
-import Background from "../pexels-melissa-sombrerero-12605435.jpg";
+import Background from "../assets/pexels-melissa-sombrerero-12605435.jpg";
 function Home() {
   const [signInModalOpen, setSignInModalOpen] = useState(false);
   const closeModal = () => setSignInModalOpen(false);
   const openModal = () => setSignInModalOpen(true);
   const { user } = UserAuth();
   return (
-    <div className="w-full h-[92svh] bg-black bg-40 bg-blur-10 absolute top-0 flex items-center justify-center">
+    <div className="w-full h-[92svh] bg-grean bg-blur-60 absolute top-0 flex items-center justify-center">
       <section className="h-full flex justify-center items-center">
         <img
           className="w-full h-full absolute object-cover blur-sm italic"
