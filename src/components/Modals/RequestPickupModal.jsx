@@ -1,15 +1,14 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { UserAuth } from "../../context/AuthContext";
 import { motion } from "framer-motion";
-import Backdrop from "../Backdrop";
 function RequestPickupModal({ handleClose }) {
   const [date, setDate] = useState("");
   const dateInputRef = useRef(null);
   const handleChange = (e) => {
     setDate(e.target.value);
   };
-
   const { user } = UserAuth();
+  console.log(date)
   return (
     <div id="requestPickupModal" className="w-full  absolute top-0 h-full bg-black bg-opacity-90 px-2 z-20 flex justify-center items-center">
       <main className="bg-white max-w-[500px] container rounded-md drop-shadow-2xl">

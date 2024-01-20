@@ -4,7 +4,7 @@ import AccountTab from "../components/Tabs/AccountTab";
 import StatsTab from "../components/Tabs/StatsTab";
 import MapTab from "../components/Tabs/MapTab";
 import Map from "../components/Map/Map";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { UserAuth } from "../context/AuthContext";
 
@@ -15,43 +15,60 @@ function Profile() {
       name: "Account",
       icon: "person-circle-outline",
       dis: "translate-x-[-4rem]",
-      route: "/account",
     },
     {
       name: "Map",
       icon: "navigate-circle-outline",
       dis: "translate-x-0",
-      route: "/account",
     },
     {
       name: "Stats",
       icon: "stats-chart-outline",
       dis: "translate-x-16",
-      route: "/account",
     },
   ];
-  
+
   const [active, setActive] = useState(1);
   const toggleComponent = useCycle(false, true);
 
+  function isEmpty(obj) {
+    return Object.keys(obj).length === 0;
+  }
   useEffect(() => {
-    console.log(user);
-    const setUpUser = async () => {
-      try {
-        await setDoc(doc(db, "users", user.uid), {
-          userID: user.uid || null,
-          userName: user.displayName || null,
-          userEmail: user.email || null,
-        });
-      } catch (e) {
-        console.log(e);
+    const userCheck = async () => {
+      if (isEmpty(user)) {
+        console.log("this object is empty");
+      } else {
+        let userId = user.uid;
+        let userRef = doc(db, "users", userId);
+        let docSnap = await getDoc(userRef);
+        if (docSnap.exists()) {
+          try {
+            await setDoc(userRef, {
+              userID: user.uid || null,
+              userName: user.displayName || null,
+              userEmail: user.email || null,
+              userHasBusiness: "",
+              userStats: {
+                latest: {
+                  house: 0,
+                  car: 0,
+                  trash: 0,
+                },
+                overall: {
+                  house: 0,
+                  car: 0,
+                  trash: 0,
+                },
+              },
+            });
+          } catch (e) {
+            console.error(e);
+          }
+        }
       }
     };
-    if (user) {
-      setUpUser();
-    } else {
-      console.log("no user");
-    }
+    userCheck();
   }, [user]);
 
   return (
@@ -73,7 +90,9 @@ function Profile() {
 
         <footer className="bg-slate-800 z-20 px-4 bottom-0 fixed w-full rounded-t-lg border-t-[2px] border-t-white">
           <ul id="tabs" className="flex relative justify-center">
-            <span className={`bg-grean duration-500 ${MenuItems[active].dis} border-4 border-white h-16 w-16 absolute -top-5 rounded-full`}>
+            <span
+              className={`bg-grean duration-500 ${MenuItems[active].dis} border-4 border-white h-16 w-16 absolute -top-5 rounded-full`}
+            >
               <span className="w-3.5 h-3.5 absolute top-4 -left-[18px] rounded-tr-[3px] shadow-myshadow1 bg-transparent"></span>
               <span className="w-3.5 h-3.5 absolute top-4 -right-[18px] rounded-tl-[5px] shadow-myshadow2 bg-transparent"></span>
             </span>

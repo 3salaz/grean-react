@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
 import { GoogleButton } from "react-google-button";
-import toast, { Toaster } from "react-hot-toast";
-const notify = () => toast("Here is your toast.");
 
 function SignInModal({ handleClose }) {
   const [email, setEmail] = useState("");
@@ -31,8 +29,7 @@ function SignInModal({ handleClose }) {
       handleClose();
     } catch (e) {
       setError(e.message);
-      console.log(setError);
-      notify();
+      console.log(error);
     }
   };
 

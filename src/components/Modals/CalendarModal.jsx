@@ -4,7 +4,7 @@ function CalendarModal({ handleClose }) {
   return (
     <div
       id="calendarModal"
-      className="w-full absolute top-0 h-full bg-black bg-opacity-30 bg-blur-10 px-2 z-20 flex justify-center items-center"
+      className="w-full absolute top-0 h-full bg-black bg-opacity-90 bg-blur-10 px-2 z-20 flex justify-center items-center"
     >
       <div className="max-w-[600px] h-[96%] container drop-shadow-2xl rounded-lg text-slate bg-white border-grean border-4">
         <motion.section className="h-full w-full flex flex-col items-center  justify-center z-[100] py-4">
@@ -16,7 +16,7 @@ function CalendarModal({ handleClose }) {
             </section>
           </header>
           <main className="w-[90%] max-w-[90%] h-[48rem] flex gap-2 overflow-x-scroll  snap-proximity snap-x no-scroll">
-            <section className="min-w-[90%] bg-slate-800 rounded-lg snap-center shadow-xl p-2">
+            <section className="min-w-[90%] bg-slate-700 rounded-lg snap-center shadow-xl p-2">
               <div className="w-full flex items-center justify-between px-4 gap-3 h-[30%] text-white">
                 <div className="flex flex-col text-left ">
                   <div className="text-5xl text-orange">Tuesday</div>
@@ -87,26 +87,3 @@ function CalendarModal({ handleClose }) {
 }
 
 export default CalendarModal;
-{
-  /* <label htmlFor="start">Start date:</label>
-
-          <input
-            type="date"
-            id="start"
-            name="trip-start"
-            value="2018-07-22"
-            min="2018-01-01"
-            max="2018-12-31"
-          />
-          <div className="bg-grean p-4 py-8 text-center">
-            <div className="flex flex-col">
-              <div>Pickup Time</div>
-              <div className="font--bold">3:00pm</div>
-              <div>
-                <div className="text-xl">2624 3rd Street</div>
-                <div>San Francisco, CA 94107</div>
-              </div>
-            </div>
-            <button className="bg-orange px-3 rounded-full">Directions</button>
-          </div> */
-}

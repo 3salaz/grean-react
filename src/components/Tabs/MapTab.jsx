@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import RequestPickupModal from "../Modals/RequestPickupModal";
-import React, { useRef, useState } from "react";
+import { useState } from "react";
 import CalendarModal from "../Modals/CalendarModal";
 import AlertsModal from "../Modals/AlertsModal";
 
