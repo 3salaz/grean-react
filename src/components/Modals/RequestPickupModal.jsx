@@ -7,7 +7,6 @@ import {
   collection,
   doc,
   onSnapshot,
-  // query,
   serverTimestamp,
   setDoc
 } from "firebase/firestore";
@@ -45,7 +44,7 @@ function RequestPickupModal({ handleClose }) {
     return () => {
       unsub();
     };
-  }, []); // Dependency array is empty to run the effect only once after component mounts
+  }); // Dependency array is empty to run the effect only once after component mounts
   // Crud Pickup Requests
   // Create
   async function addPickup() {
@@ -82,6 +81,7 @@ function RequestPickupModal({ handleClose }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     addPickup();
+    console.log(pickups)
   };
 
   function getCurrentDate() {

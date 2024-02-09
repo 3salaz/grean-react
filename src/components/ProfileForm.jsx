@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import { collection, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { useState } from "react";
+import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { UserAuth } from "../context/AuthContext";
 import { db } from "../firebase";
-import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 
 const ProfileForm = () => {
@@ -72,6 +71,7 @@ const ProfileForm = () => {
           console.log("Location successfully created!");
         }
       }
+      navigate('/profile');
     } catch (error) {
       console.error("Error creating/updating profile: ", error);
     }

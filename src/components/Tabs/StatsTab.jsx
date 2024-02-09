@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { UserAuth } from "../../context/AuthContext";
-import { motion, useCycle } from "framer-motion";
-import { Firestore, collection, doc, getDoc, getDocs, query } from "firebase/firestore";
+import { motion } from "framer-motion";
+import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 
 function StatsTab() {
@@ -26,7 +26,6 @@ function StatsTab() {
           setOverallTrashData(JSON.stringify(dataTrash, null , 2))
 
           let dataHouse = dataFromFirestore["userStats"]["overall"]["house"]
-          console.log(dataHouse)
           setOverallHouseData(JSON.stringify(dataHouse, null , 2))
 
 
@@ -38,7 +37,7 @@ function StatsTab() {
       }
     };
     fetchData();
-  }, []);
+  });
 
   const setOverallStats = async () => {
     console.log("pressed current stats button");

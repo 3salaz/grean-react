@@ -4,7 +4,6 @@ import ReactMapGl, {
   Popup,
   NavigationControl,
   FullscreenControl,
-  ScaleControl,
   GeolocateControl,
 } from "react-map-gl";
 
@@ -21,7 +20,11 @@ function Map() {
     [-122.250481, 37.871651], // Northeast coordinates
   ];
 
-  const locations = [
+
+
+  const [popupInfo, setPopupInfo] = useState(null);
+  
+  const locations = useMemo(() => [
     {
       businessName: "3salaz",
       city: "San Francisco",
@@ -54,12 +57,11 @@ function Map() {
       latitude: 37.696487,
       longitude: -122.388322,
     },
-  ];
-
-  const [popupInfo, setPopupInfo] = useState(null);
+  ], []);
 
   const pins = useMemo(
     () =>
+      
       locations.map((location, index) => (
         <Marker
           key={`marker-${index}`}
@@ -82,7 +84,7 @@ function Map() {
           </div>
         </Marker>
       )),
-    []
+    [locations]
   );
   // initialize map when component mounts
   return (
@@ -112,7 +114,7 @@ function Map() {
             <div className="bg-white flex flex-col gap-1">
               <header>
                 <div className="flex items-center justify-center">
-                  <img className="w-full rounded-full basis-1/3" src={popupInfo.busisnessLogo} /> 
+                  <img className="w-full rounded-full basis-1/3" src={popupInfo.busisnessLogo} alt="business logo" /> 
                 </div>
  
                 <div className="flex text-[16px] items-center justify-center">

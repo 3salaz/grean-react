@@ -37,11 +37,12 @@ function Profile() {
   useEffect(() => {
     const userCheck = async () => {
       if (isEmpty(user)) {
-        console.log("this object is empty");
+        console.log("checking user...");
       } else {
         let userId = user.uid;
         let userRef = doc(db, "users", userId);
         let docSnap = await getDoc(userRef);
+        console.log(`User: ${user.displayName} : Confirmed ✅`);
         if (docSnap.exists()) {
           try {
             await setDoc(userRef, {

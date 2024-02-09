@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { db } from "../../firebase";
 import { collection, getDocs } from "firebase/firestore";
@@ -23,8 +23,6 @@ function Notifications({ handleClose }) {
 
     fetchPickups();
   }, []); // Dependency array is empty to run the effect only once after component mounts
-
-  console.log(pickups)
   return (
     <div
       id="notifications"
