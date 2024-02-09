@@ -1,17 +1,51 @@
+import { useEffect, useState } from "react";
 import { UserAuth } from "../../context/AuthContext";
 import { motion, useCycle } from "framer-motion";
+import { Firestore, collection, doc, getDoc, getDocs, query } from "firebase/firestore";
+import { db } from "../../firebase";
 
 function StatsTab() {
   const { user } = UserAuth();
-  const tabs = [
-    {
-      name: "Latest",
-      color: "bg-orange",
-    },
-    {
-      name: "Overall",
-    },
-  ];
+  const [overallCarData, setOverallCarData] = useState("");
+  const [overallHouseData, setOverallHouseData] = useState("");
+  const [overallTrashData, setOverallTrashData] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const documentId = user.uid; // Replace with your actual document ID
+        const documentRef = doc(db, 'users', documentId);
+        const documentSnapshot = await getDoc(documentRef);
+
+        if (documentSnapshot.exists()) {
+          const dataFromFirestore = { id: documentSnapshot.id, ...documentSnapshot.data() };
+          let dataCar = dataFromFirestore["userStats"]["overall"]["car"]
+          setOverallCarData(JSON.stringify(dataCar, null , 2))
+
+          let dataTrash = dataFromFirestore["userStats"]["overall"]["trash"]
+          setOverallTrashData(JSON.stringify(dataTrash, null , 2))
+
+          let dataHouse = dataFromFirestore["userStats"]["overall"]["house"]
+          console.log(dataHouse)
+          setOverallHouseData(JSON.stringify(dataHouse, null , 2))
+
+
+        } else {
+          console.log('Document does not exist.');
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const setOverallStats = async () => {
+    console.log("pressed current stats button");
+  };
+  const setCurrentStats = async () => {
+    console.log("pressed current stats button");
+  };
 
   return (
     <section
@@ -56,7 +90,7 @@ function StatsTab() {
                         <div className="flex items-center justify-center">
                           <ion-icon size="large" name="home-outline"></ion-icon>
                         </div>
-                        <h4 className="text-xl font-bold">12</h4>
+                        <h4 className="text-xl font-bold"><pre>{overallCarData || 1}</pre></h4>
                         <button className="text-white flex items-center justify-center">
                           <ion-icon
                             size="large"
@@ -70,7 +104,7 @@ function StatsTab() {
                         <div className="flex items-center justify-center">
                           <ion-icon size="large" name="car-outline"></ion-icon>
                         </div>
-                        <h4 className="text-xl font-bold">12</h4>
+                        <h4 className="text-xl font-bold">{overallHouseData}</h4>
                         <button className="text-white flex items-center justify-center">
                           <ion-icon
                             size="large"
@@ -87,7 +121,7 @@ function StatsTab() {
                             name="trash-outline"
                           ></ion-icon>
                         </div>
-                        <h4 className="text-xl font-bold">12</h4>
+                        <h4 className="text-xl font-bold">{overallTrashData}</h4>
                         <button className="text-white flex items-center justify-center">
                           <ion-icon
                             size="large"
@@ -116,7 +150,7 @@ function StatsTab() {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.8 }}
                   className={`bg-grean py-2 px-4 rounded-lg hover:border-2 hover:border-grean hover:text-grean hover:bg-white font-bold`}
-                  onClick=""
+                  onClick={setOverallStats}
                 >
                   Name
                 </motion.button>
@@ -124,7 +158,7 @@ function StatsTab() {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.8 }}
                   className={`bg-orange py-2 px-4 rounded-lg hover:border-2 hover:border-orange hover:text-orange hover:bg-white font-bold`}
-                  onClick=""
+                  onClick={setCurrentStats}
                 >
                   Name
                 </motion.button>

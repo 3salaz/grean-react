@@ -3,7 +3,7 @@ import { useCycle, motion } from "framer-motion";
 import AccountTab from "../components/Tabs/AccountTab";
 import StatsTab from "../components/Tabs/StatsTab";
 import MapTab from "../components/Tabs/MapTab";
-import Map from "../components/Map/Map";
+import Map from "../components/Map";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { UserAuth } from "../context/AuthContext";

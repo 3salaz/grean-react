@@ -30,7 +30,9 @@ function SignUpModal({ handleClose }) {
     e.preventDefault();
     setError("");
     try {
-        await createUser(email, password)
+        const userCredential= await createUser(email, password);
+        const authUser = userCredential.user;
+        
         navigate('/profile');
         handleClose();
     } catch (e) {

@@ -1,10 +1,10 @@
-import logo from "../../assets/logo.png";
-import avatar from "../../assets/avatar.svg";
+import logo from "../assets/logo.png";
+import avatar from "../assets/avatar.svg";
 import { motion, useCycle } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
-import { UserAuth } from "../../context/AuthContext";
+import { UserAuth } from "../context/AuthContext";
 import { useState } from "react";
-import SignUpModal from "../Modals/SignUpModal";
+import SignUpModal from "./Modals/SignUpModal";
 
 function Navbar() {
   const { user, logOut } = UserAuth();
