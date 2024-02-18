@@ -1,52 +1,53 @@
 import { motion } from "framer-motion";
-import RequestPickupModal from "../Modals/RequestPickupModal";
 import { useState } from "react";
-import CalendarModal from "../Modals/CalendarModal";
-import AlertsModal from "../Modals/AlertsModal";
+import Pickup from "../Modals/Pickup";
+import Calendar from "../Modals/Calendar";
+import Notifications from "../Modals/Notifications";
 
 function MapTab() {
   // Request Pickup Modal
-  const [requestPickupModalOpen, setRequestPickupModalOpen] = useState(false);
-  const closePickupModal = () => setRequestPickupModalOpen(false);
-  const openPickupModal = () => setRequestPickupModalOpen(true);
+  const [requestPickupOpen, setRequestPickupOpen] = useState(false);
+  const closePickup = () => setRequestPickupOpen(false);
+  const openPickup = () => setRequestPickupOpen(true);
 
   // Open Calendar Modal
-  const [calendarModalOpen, setCalendarModalOpen] = useState(false);
-  const closeCalendarModal = () => setCalendarModalOpen(false);
-  const openCalendarModal = () => setCalendarModalOpen(true);
-  //     // Open Alerts Modal
-  const [alertsModalOpen, setAlertsModalOpen] = useState(false);
-  const closeAlertsModal = () => setAlertsModalOpen(false);
-  const openAlertsModal = () => setAlertsModalOpen(true);
+  const [calendarOpen, setCalendarOpen] = useState(false);
+  const closeCalendar = () => setCalendarOpen(false);
+  const openCalendarModal = () => setCalendarOpen(true);
+  //     // Open Notification Modal
+  const [notificationsOpen, setNotificationsOpen] = useState(false);
+  const closeNotifications = () => setNotificationsOpen(false);
+  const openNotifications = () => setNotificationsOpen(true);
 
   return (
     <div id="mapTab">
       {requestPickupModalOpen && (
-        <RequestPickupModal
+        <Pickup
           modalOpen={requestPickupModalOpen}
-          handleClose={closePickupModal}
+          handleClose={closePickup}
         />
       )}
-      {calendarModalOpen && (
-        <CalendarModal
-          modalOpen={calendarModalOpen}
-          handleClose={closeCalendarModal}
+      {calendarOpen && (
+        <Calendar
+          modalOpen={calendarOpen}
+          handleClose={closeCalendar}
         />
       )}
-      {alertsModalOpen && (
-        <AlertsModal
-          modalOpen={alertsModalOpen}
-          handleClose={closeAlertsModal}
+      {notificationsModalOpen && (
+        <Notifications
+          modalOpen={notificationOpen}
+          handleClose={closeNotifications}
         />
       )}
       <div
         id="mapModals"
         className="absolute w-full bottom-10 z-10 flex items-center justify-center"
       >
-        <div className="container mx-auto">
+        <div className="container mx-auto bg-white">
           <div className="max-w-[650px] flex justify-end m-auto rounded-md drop-shadow-xl">
             <div className="flex justify-end items-end w-full gap-4 px-5">
               <div className="flex flex-col w-full basis-4/5 justify-between gap-6">
+                {/* Pickup Modal */}
                 <motion.button
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
@@ -62,31 +63,29 @@ function MapTab() {
               </div>
 
               <div className="flex flex-col gap-2  basis-1/5 items-center justify-between">
-
-              <motion.span
-                className="text-white bg-red-500 rounded-full z-20 w-6 h-6  absolute top-[-12px] right-9 flex items-center justify-center">
-                    2
-                  </motion.span>
-                <motion.button
+                {/* Notification Modal */}
+                <motion.button 
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 0.9 }}
                   type="button"
                   onClick={() =>
                     requestPickupModalOpen
-                      ? closeAlertsModal()
-                      : openAlertsModal()
+                      ? closeNotificationsModal()
+                      : openNotificationsModal()
                   }
                   className="rounded-md p-1 w-14 h-14 bg-white text-red-500 focus:outline-none focus:ring-2 border border-yellow-200 focus:ring-blue-300 focus:ring-offset-2 flex items-center justify-center"
                 >
                   <span className="sr-only">View notifications</span>
+                  <motion.span className="text-white bg-red-500 rounded-full z-20 w-6 h-6  absolute top-[-12px] right-9 flex items-center justify-center">
+                  2
+                  </motion.span>
                   <ion-icon
                     size="large"
                     name="notifications-outline"
                   ></ion-icon>
                 </motion.button>
-
-                <motion.button
-                  className="rounded-md bg-white bg-green-300 text-grean  aspect-square border border-yellow-200 flex items-center justify-center drop-shadow-xl w-14 h-14"
+                {/* Calendar Modal */}
+                <motion.button className="rounded-md bg-white bg-green-300 text-grean  aspect-square border border-yellow-200 flex items-center justify-center drop-shadow-xl w-14 h-14"
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={() =>
@@ -100,7 +99,6 @@ function MapTab() {
                     name="calendar-number-outline"
                   ></ion-icon>
                 </motion.button>
-                <div></div>
               </div>
             </div>
           </div>

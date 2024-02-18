@@ -4,9 +4,10 @@ import AccountTab from "../components/Tabs/AccountTab";
 import StatsTab from "../components/Tabs/StatsTab";
 import MapTab from "../components/Tabs/MapTab";
 import Map from "../components/Map";
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { UserAuth } from "../context/AuthContext";
+import {toast} from "react-toastify";
 
 function Profile() {
   const { user } = UserAuth();
@@ -34,13 +35,14 @@ function Profile() {
   function isEmpty(obj) {
     return Object.keys(obj).length === 0;
   }
+  
   useEffect(() => {
     const userCheck = async () => {
       if (isEmpty(user)) {
         console.log("checking user...");
       } else {
         let userId = user.uid;
-        let userRef = doc(db, "users", userId);
+        let userRef = doc(db, "profiles", userId);
         let docSnap = await getDoc(userRef);
         console.log(`User: ${user.displayName} : Confirmed ✅`);
         if (docSnap.exists()) {
@@ -71,6 +73,34 @@ function Profile() {
     };
     userCheck();
   }, [user]);
+
+  const [pickups, setPickups] = useState([]);
+
+  // Fetch pickups data from Firebase on component mount
+  useEffect(() => {
+    const fetchPickups = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "pickups"));
+        const pickupsData = [];
+        querySnapshot.forEach((doc) => {
+          pickupsData.push({ id: doc.id, ...doc.data() });
+        });
+        setPickups(pickupsData);
+      } catch (error) {
+        console.error("Error fetching pickups:", error);
+        toast.error("Error fetching pickups. Please try again later.");
+      }
+    };
+
+    fetchPickups();
+  }, []);
+
+  useEffect(() => {
+    if (pickups.length > 0) {
+      const latestPickup = pickups[pickups.length - 1];
+      toast.success(`New pickup added: ${latestPickup}`);
+    }
+  }, [pickups]);
 
   return (
     <section className="w-full">

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { db } from "../../firebase";
 import { collection, getDocs } from "firebase/firestore";
+import { toast } from "react-toastify";
 
 function Notifications({ handleClose }) {
   const [pickups, setPickups] = useState([]);

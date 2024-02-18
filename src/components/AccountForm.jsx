@@ -110,11 +110,11 @@ const AccountForm = () => {
       className='container mx-auto rounded-lg flex flex-col gap-4'
     >
       <div className={`flex flex-col overflow-y-scroll h-[28rem] max-h-[29rem] px-2 no-scroll no-scroll::-webkit-scrollbar py-6
-        ${editMode ? "bg-light-grean p-4" : "bg-white"}
+        ${editMode ? "bg-light-grean py-4 rounded-md" : "bg-white"}
       `}>
         {/* Personal Details */}
 
-        {editMode ? <div className="text-3xl">Edit Mode</div> : <div className="text-3xl invisible">Locked Mode</div>}
+        {editMode ? <div className="text-3xl text-center">Edit Mode</div> : <div className="text-3xl invisible">Locked Mode</div>}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-4">
           {/* First Name */}
           <div className="flex items-center flex-col md:flex-row col-span-2 gap-2">
@@ -129,13 +129,13 @@ const AccountForm = () => {
               type="text"
               name="firstName"
               value={formData.firstName}
-              readOnly={formData.readOnly}
+              readOnly={!editMode}
               onChange={handleChange}
               required
               className={`px-4 py-2  border  w-[80%] md:basis-4/6 rounded-md focus:outline-none focus:border-blue-500 text-center ${
                 editMode
                   ? "bg-slate-100 border-slate-200"
-                  : "bg-slate-300 border-grean font-bold"
+                  : "bg-slate-200 border-grean font-bold"
               }`} // Toggle class name based on editMode
             />
           </div>
@@ -149,10 +149,14 @@ const AccountForm = () => {
               type="text"
               name="lastName"
               value={formData.lastName}
-              readOnly={formData.readOnly}
+              readOnly={!editMode}
               onChange={handleChange}
               required
-              className=" px-4 py-2 bg-slate-100 border border-slate-300 w-[80%] md:basis-4/6 rounded-md focus:outline-none focus:border-blue-500 text-center"
+              className={`px-4 py-2  border  w-[80%] md:basis-4/6 rounded-md focus:outline-none focus:border-blue-500 text-center ${
+                editMode
+                  ? "bg-slate-100 border-slate-200"
+                  : "bg-slate-200 border-grean font-bold"
+              }`} // Toggle class name based on editMode
             />
           </div>
           {/* Business Check */}
@@ -165,7 +169,7 @@ const AccountForm = () => {
               type="checkbox"
               name="isBusiness"
               checked={formData.isBusiness}
-              readOnly={formData.readOnly}
+              readOnly={!editMode}
               onChange={handleChange}
             />
           </div>
@@ -186,10 +190,14 @@ const AccountForm = () => {
                 type="text"
                 name="businessName"
                 value={formData.businessName}
-                readOnly={formData.readOnly}
+                readOnly={!editMode}
                 onChange={handleChange}
                 required
-                className="px-4 py-2 bg-slate-100 border border-slate-300 w-[80%] md:basis-4/6 rounded-md focus:outline-none focus:border-blue-500 text-center"
+                className={`px-4 py-2  border  w-[80%] md:basis-4/6 rounded-md focus:outline-none focus:border-blue-500 text-center ${
+                editMode
+                  ? "bg-slate-100 border-slate-200"
+                  : "bg-slate-200 border-grean font-bold"
+              }`} // Toggle class name based on editMode
               />
             </div>
             <div className="flex items-center flex-col md:flex-row col-span-2 gap-2">
@@ -204,10 +212,14 @@ const AccountForm = () => {
                 type="text"
                 name="businessAddress"
                 value={formData.businessAddress}
-                readOnly={formData.readOnly}
+                readOnly={!editMode}
                 onChange={handleChange}
                 required
-                className="px-4 py-2 bg-slate-100 border border-slate-300 w-[80%] md:basis-4/6 rounded-md focus:outline-none focus:border-blue-500 text-center"
+                className={`px-4 py-2  border  w-[80%] md:basis-4/6 rounded-md focus:outline-none focus:border-blue-500 text-center ${
+                editMode
+                  ? "bg-slate-100 border-slate-200"
+                  : "bg-slate-200 border-grean font-bold"
+              }`} // Toggle class name based on editMode
               />
             </div>
             {/* Email Address */}
@@ -243,9 +255,13 @@ const AccountForm = () => {
                 type="url"
                 name="website"
                 value={formData.website}
-                readOnly={formData.readOnly}
+                readOnly={!editMode}
                 onChange={handleChange}
-                className="px-4 py-2 bg-slate-100 border border-slate-300 w-[80%] md:basis-4/6 rounded-md focus:outline-none focus:border-blue-500 text-center"
+                className={`px-4 py-2  border  w-[80%] md:basis-4/6 rounded-md focus:outline-none focus:border-blue-500 text-center ${
+                editMode
+                  ? "bg-slate-100 border-slate-200"
+                  : "bg-slate-200 border-grean font-bold"
+              }`} // Toggle class name based on editMode
               />
             </div>
             {/* Description */}
@@ -260,9 +276,13 @@ const AccountForm = () => {
                 id="description"
                 name="description"
                 value={formData.description}
-                readOnly={formData.readOnly}
+                readOnly={!editMode}
                 onChange={handleChange}
-                className="px-4 py-2 bg-slate-100 border border-slate-300 w-[80%] md:basis-4/6 rounded-md focus:outline-none focus:border-blue-500 text-center"
+                className={`px-4 py-2  border  w-[80%] md:basis-4/6 rounded-md focus:outline-none focus:border-blue-500 text-center ${
+                editMode
+                  ? "bg-slate-100 border-slate-200"
+                  : "bg-slate-200 border-grean font-bold"
+              }`} // Toggle class name based on editMode
               ></textarea>
             </div>
           </div>
