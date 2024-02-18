@@ -1,29 +1,9 @@
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { db } from "../../firebase";
-import { collection, getDocs } from "firebase/firestore";
-import { toast } from "react-toastify";
+import { usePickups } from "../../context/PickupsContext";
 
 function Notifications({ handleClose }) {
-  const [pickups, setPickups] = useState([]);
+  const { visiblePickups, deletePickup } = usePickups();
 
-  // Fetch pickups data from Firebase on component mount
-  useEffect(() => {
-    const fetchPickups = async () => {
-      try {
-        const querySnapshot = await getDocs(collection(db, "pickups"));
-        const pickupsData = [];
-        querySnapshot.forEach((doc) => {
-          pickupsData.push({ id: doc.id, ...doc.data() });
-        });
-        setPickups(pickupsData);
-      } catch (error) {
-        console.error("Error fetching pickups:", error);
-      }
-    };
-
-    fetchPickups();
-  }, []); // Dependency array is empty to run the effect only once after component mounts
   return (
     <div
       id="notifications"
@@ -40,7 +20,7 @@ function Notifications({ handleClose }) {
         </header>
         <main className="h-[90%]  flex flex-col basis-5/6 items-center justify-center">
           <ul className="n-list w-full basis-5/6 max-h-[100%] gap-3 flex flex-col overflow-scroll p-2">
-          {pickups.map((pickup) => (
+            {visiblePickups.map(pickup => (
               <li key={pickup.id} className="flex gap-2 flex-col bg-light py-2">
                 <div className="flex justify-center items-center gap-3">
                   <img
@@ -56,7 +36,10 @@ function Notifications({ handleClose }) {
                 <p className="text-center">{pickup.notes}</p>
                 <div className="flex justify-center items-center gap-1">
                   <button className="px-2 text-grean">Accept</button>
-                  <button className="px-2 text-red-500">Decline</button>
+                  <button className="px-2 text-red-500"
+                    onClick={() => deletePickup(pickup.id)}>
+                      Decline
+                  </button>
                 </div>
               </li>
             ))}

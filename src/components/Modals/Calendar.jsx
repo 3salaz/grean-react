@@ -44,39 +44,6 @@ function CalendarModal({ handleClose }) {
             </section>
           </header>
           <main className="w-[90%] max-w-[90%] h-[48rem] flex gap-2 overflow-x-scroll  snap-proximity snap-x no-scroll">
-            {/* <section className="min-w-[90%] bg-slate-700 rounded-lg snap-center shadow-xl p-2">
-              <div className="w-full flex items-center justify-between px-4 gap-3 h-[30%] text-white">
-                <div className="flex flex-col text-left ">
-                  <div className="text-5xl text-orange">Tuesday</div>
-                  <div className="text-2xl">January</div>
-                </div>
-                <div className="text-8xl">
-                  2<span className="text-lg">nd</span>
-                </div>
-              </div>
-              <div className="w-full bg-white text-slate-800 rounded-md h-[60%]">
-                <div className="text-center flex flex-col gap-4">
-                  <div>
-                    <div className="text-3xl">Erik Salazar</div>
-                    <div className="text-2xl font-bold">3salaz</div>
-                    <div className="text-lg">2624 3rd Street</div>
-                    <div className="text-lg">San Francisco, Ca</div>
-                  </div>
-
-                  <div>
-                    <div className="text-5xl font-bold">3:45pm</div>
-                  </div>
-                  <div>
-                    <a
-                      href="google.com"
-                      className="text-xl text-orange underline"
-                    >
-                      Directions
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </section> */}
             {pickups.map((pickup) => (
               <section
                 key={pickup.id}

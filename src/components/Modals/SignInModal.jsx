@@ -15,8 +15,8 @@ function SignInModal({ handleClose }) {
   const handleGoogleSignIn = async () => {
     try {
       await googleSignIn();
-      handleClose();
       toast.success('Signed in successfully with Google!');
+      handleClose();
       navigate("/profile");
     } catch (error) {
       console.log(error);

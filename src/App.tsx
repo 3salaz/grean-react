@@ -15,6 +15,7 @@ import Admin from "./components/Admin/Admin";
 import Contact from "./routes/Contact";
 import About from "./routes/About";
 import Services from "./routes/Services";
+import { PickupsProvider } from "./context/PickupsContext";
 
 function App() {
   return (
@@ -28,7 +29,9 @@ function App() {
             path="/profile"
             element={
               <ProtectedRoute>
-                <Profile />
+                <PickupsProvider>
+                  <Profile />
+                </PickupsProvider>
               </ProtectedRoute>
             }
           ></Route>
