@@ -2,65 +2,69 @@ import { useEffect, useState } from "react";
 import { db } from "../../firebase";
 import { collection, getDocs } from "firebase/firestore";
 import { motion } from "framer-motion";
+import { usePickups } from "../../context/PickupsContext";
 
-function CalendarModal({ handleClose }) {
-  const [numberOfPickups, setNumberOfPickups] = useState(0);
-  const [pickups, setPickups] = useState([]); // Initialize as an empty array to hold pickup data
+function Calendar({ handleClose }) {
+  const { userPickups } = usePickups();
 
-  useEffect(() => {
-    const fetchPickupIds = async () => {
-      const pickupsCollectionRef = collection(db, "pickups");
-      try {
-        const snapshot = await getDocs(pickupsCollectionRef);
-        const numberOfPickups = snapshot.size;
-        setNumberOfPickups(numberOfPickups);
-        const pickupsData = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        setPickups(pickupsData);
-      } catch (error) {
-        console.error("Error fetching pickups:", error);
-        setNumberOfPickups(0);
+  function formatDateInfo(dateString) {
+    if (!dateString) return { dayOfWeek: '', monthName: '', day: '', year: '' };
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) {
+      return { dayOfWeek: 'Invalid Date', monthName: '', day: '', year: '' };
+    }
+    const formatter = new Intl.DateTimeFormat('en-US', {
+      weekday: 'long', // "Monday", "Tuesday", etc.
+      month: 'long', // "January", "February", etc.
+      day: 'numeric', // 1, 2, 3, etc.
+      year: 'numeric' // 2021, 2022, etc.
+    });
+
+    const formattedDate = formatter.formatToParts(date).reduce((acc, part) => {
+      if (part.type !== 'literal') {
+        acc[part.type] = part.value;
       }
-    };
-    fetchPickupIds();
-  }, []); // Empty dependency array ensures this effect runs only once after the component mounts
+      return acc;
+    }, {});
 
+    return {
+      dayOfWeek: formattedDate.weekday,
+      monthName: formattedDate.month,
+      day: formattedDate.day,
+      year: formattedDate.year
+    };
+  }
   return (
     <div
-      id="calendarModal"
+      id="calendar"
       className="w-full absolute top-0 h-full bg-black bg-opacity-90 bg-blur-10 px-2 z-20 flex justify-center items-center"
     >
       <div className="max-w-[600px] h-[96%] container drop-shadow-2xl rounded-lg text-slate bg-white border-grean border-4">
         <motion.section className="h-full w-full flex flex-col items-center  justify-center z-[100] py-4">
           <header className="w-full flex gap-2 justify-start items-center pl-12">
             <section className="text-8xl font-bold">
-              {numberOfPickups === null ? "Loading..." : numberOfPickups}
+              {userPickups === null ? "Loading..." : userPickups.length}
             </section>
             <section className="h-full flex flex-col justify-end items-start pb-4">
               <div className="text-2xl font-bold">Pickups</div>
               <div>View Your Week Below ⬇️</div>
             </section>
           </header>
-          <main className="w-[90%] max-w-[90%] h-[48rem] flex gap-2 overflow-x-scroll  snap-proximity snap-x no-scroll">
-            {pickups.map((pickup) => (
-              <section
-                key={pickup.id}
-                className="min-w-[90%] bg-slate-700 rounded-lg snap-center shadow-xl p-2"
-              >
-                <div className="w-full flex items-center justify-between px-4 gap-3 h-[30%] text-white">
-                  <div className="flex flex-col text-left ">
-                    <div className="text-5xl text-orange">Tuesday</div>
-                    <div className="text-2xl">January</div>
+          <main className="w-[90%] max-w-[90%] h-[48rem] flex gap-2 overflow-x-scroll snap-proximity snap-x no-scroll">
+            {userPickups.map((pickup) => {
+              // Move the declaration here
+              const { dayOfWeek, monthName, day, year } = formatDateInfo(pickup.pickupDate);
+
+              return (
+                <section key={pickup.id} className="min-w-[90%] bg-slate-700 rounded-lg snap-center shadow-xl p-2">
+                  {/* Now you can use the variables here */}
+                  <div className="w-full flex items-center justify-between px-4 gap-3 h-[30%] text-white">
+                    <div className="flex flex-col text-left">
+                      <div className="text-5xl text-orange">{dayOfWeek}</div>
+                      <div className="text-2xl">{monthName} {day}, {year}</div>
+                    </div>
                   </div>
-                  <div className="text-xl">
-                    {
-                    pickup.pickupDate
-                    }
-                  </div>
-                </div>
-                <div className="w-full bg-white text-slate-800 rounded-md h-[60%]">
+                  <div className="w-full bg-white text-slate-800 rounded-md h-[60%]">
                   <div className="text-center flex flex-col gap-4">
                     <div>
                       <div className="text-3xl">{pickup.name}</div>
@@ -85,9 +89,11 @@ function CalendarModal({ handleClose }) {
                     </div>
                   </div>
                 </div>
-              </section>
-            ))}
+                </section>
+              );
+            })}
           </main>
+
           <footer className="w-full px-8">
             <div className="flex justify-end items-center">
               <ion-icon
@@ -127,4 +133,4 @@ function CalendarModal({ handleClose }) {
   );
 }
 
-export default CalendarModal;
+export default Calendar;

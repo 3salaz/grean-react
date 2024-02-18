@@ -95,7 +95,7 @@ function Profile() {
   
       if (newPickupsAdded) {
         // Trigger toast notification for new pickup
-        toast.success("New pickup added!");
+        toast.success("New pickup sumbitted!");
   
         // Update the set of pickup IDs
         setPickupIds(newPickupIds);

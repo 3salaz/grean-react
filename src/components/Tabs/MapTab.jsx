@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion} from "framer-motion";
 import { usePickups } from "../../context/PickupsContext";
 import Pickup from "../Modals/Pickup";
-import Calendar  from "../Modals/Calendar";
+import Calendar from "../Modals/Calendar";
 import Notifications from "../Modals/Notifications";
 
 function MapTab() {
