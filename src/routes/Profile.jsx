@@ -19,7 +19,7 @@ import { toast } from "react-toastify";
 function Profile() {
   const { user } = UserAuth();
   const [active, setActive] = useState(1);
-  const [toggleComponent, cycleComponent] = useCycle(false, true);
+  const [cycleComponent] = useCycle(false, true);
   const [pickups, setPickups] = useState([]);
   const [pickupIds, setPickupIds] = useState(new Set());
   
@@ -75,6 +75,7 @@ function Profile() {
           pickupsData.push({ id: doc.id, ...doc.data() });
         });
         setPickups(pickupsData);
+        console.log(pickups)
       } catch (error) {
         console.error("Error fetching pickups:", error);
         toast.error("Error fetching pickups. Please try again later.");

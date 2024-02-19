@@ -1,6 +1,3 @@
-import { useEffect, useState } from "react";
-import { db } from "../../firebase";
-import { collection, getDocs } from "firebase/firestore";
 import { motion } from "framer-motion";
 import { usePickups } from "../../context/PickupsContext";
 

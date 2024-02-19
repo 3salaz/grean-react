@@ -6,19 +6,21 @@ import { v4 as uuidv4 } from "uuid";
 import {
   collection,
   doc,
+  getDoc,
   onSnapshot,
   serverTimestamp,
-  setDoc
+  setDoc,
 } from "firebase/firestore";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Pickup({ handleClose }) {
+  const [businessAddress, setBusinessAddress] = useState("");
   const [formData, setFormData] = useState({
     pickupDate: getCurrentDate(),
     pickupTime: "12:00",
     notes: "",
-    pickupAddress: "2624 3rd Street",
+    businessAddress,
   });
 
   const handleChange = (e) => {
@@ -31,8 +33,7 @@ function Pickup({ handleClose }) {
   const collectionRef = collection(db, "pickups");
   const { user } = UserAuth();
   const [pickups, setPickups] = useState([]);
-  const [profie, setProfile] = useState([]);
-  
+
   useEffect(() => {
     const unsub = onSnapshot(collectionRef, (querySnapshot) => {
       const items = [];
@@ -82,7 +83,7 @@ function Pickup({ handleClose }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     addPickup();
-    console.log(pickups)
+    console.log(pickups);
   };
 
   function getCurrentDate() {
@@ -98,71 +99,107 @@ function Pickup({ handleClose }) {
     }
     return `${year}-${month}-${day}`;
   }
-  
+  const fetchBusinessAddress = async () => {
+    if (user && user.uid) {
+      // Check if user exists and has a uid
+      const docRef = doc(db, "locations", user.uid); // Reference to the user-specific document
+      try {
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          // Document found, extract the businessAddress
+          const businessAddress = docSnap.data().businessAddress;
+          console.log("Business Address:", businessAddress);
+          return businessAddress;
+        } else {
+          // No such document
+          console.log("No such document!");
+        }
+      } catch (error) {
+        console.error("Error fetching document:", error);
+      }
+    }
+  };
+  useEffect(() => {
+    if (user) {
+      // Only fetch if user is logged in
+      fetchBusinessAddress().then((address) => {
+        // Do something with the address, maybe set state
+        setBusinessAddress(address); // Assuming you have a state variable to hold this
+      });
+    }
+  }, [user]);
+
   return (
-      <div
-        id="requestPickupModal"
-        className="w-full  absolute top-0 h-full bg-black bg-opacity-90 px-2 z-20 flex justify-center items-center"
-      >
-        <main className="bg-white max-w-[650px] min-h-[500px] container rounded-md drop-shadow-2xl flex items-center justify-center border-t-grean border-t-8">
-          <form className="text-center" onSubmit={handleSubmit}>
+    <div
+      id="requestPickupModal"
+      className="w-full  absolute top-0 h-full bg-black bg-opacity-90 px-2 z-20 flex justify-center items-center"
+    >
+      <main className="bg-white max-w-[650px] min-h-[500px] container rounded-md drop-shadow-2xl flex items-center justify-center border-t-grean border-t-8">
+        <form className="text-center" onSubmit={handleSubmit}>
+          <motion.button
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
+            className="bg-red-500 flex text-white p-2 rounded-md justify-center text-center items-center absolute top-5 right-5"
+            onClick={handleClose}
+          >
+            Close
+          </motion.button>
+          <div className="flex flex-col">
+            <label>
+              Address:
+              <select
+                name="pickupAddress"
+                value={businessAddress}
+                onChange={handleChange}
+                className="rounded-lg px-2 bg-grean text-white"
+              >
+                {/* Ensure there's a default option or handling for when businessAddress is not yet fetched */}
+                {businessAddress && (
+                  <option value={businessAddress}>{businessAddress}</option>
+                )}
+              </select>
+            </label>
+            <label>
+              Date:
+              <input
+                type="date"
+                name="pickupDate"
+                value={formData.pickupDate}
+                min={getCurrentDate()}
+                onChange={handleChange}
+              />
+            </label>
+            <label>
+              Time:
+              <input
+                type="time"
+                name="pickupTime"
+                value={formData.pickupTime}
+                onChange={handleChange}
+              />
+            </label>
+            <label>
+              Description:
+              <textarea
+                name="notes"
+                value={formData.notes}
+                onChange={handleChange}
+                placeholder="Enter any notes here for the driver"
+              />
+            </label>
             <motion.button
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.9 }}
-              className="bg-red-500 flex text-white p-2 rounded-md justify-center text-center items-center absolute top-5 right-5"
-              onClick={handleClose}
+              className="bg-grean text-white px-2 p-1 rounded-md"
+              type="submit"
             >
-              Close
+              Submit
             </motion.button>
-            <div className="flex flex-col">
-              <label>
-                Address:
-                <select name="pickupAddress" onChange={handleChange}>
-                  <option value={formData.pickupAddress}>
-                    {formData.pickupAddress}
-                  </option>
-                </select>
-              </label>
-              <label>
-                Date:
-                <input
-                  type="date"
-                  name="pickupDate"
-                  value={formData.pickupDate}
-                  min={getCurrentDate()}
-                  onChange={handleChange}
-                />
-              </label>
-              <label>
-                Time:
-                <input
-                  type="time"
-                  name="pickupTime"
-                  value={formData.pickupTime}
-                  onChange={handleChange}
-                />
-              </label>
-              <label>
-                Description:
-                <textarea
-                  name="notes"
-                  value={formData.notes}
-                  onChange={handleChange}
-                  placeholder="Enter any notes here for the driver"
-                />
-              </label>
-              <motion.button
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.9 }}
-                className="bg-grean text-white px-2 p-1 rounded-md"
-                type="submit"
-              >
-                Submit
-              </motion.button>
-            </div>
-          </form>
-        </main>
-      </div>
+          </div>
+        </form>
+      </main>
+    </div>
   );
 }
 
