@@ -13,7 +13,7 @@ import {
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function RequestPickupModal({ handleClose }) {
+function Pickup({ handleClose }) {
   const [formData, setFormData] = useState({
     pickupDate: getCurrentDate(),
     pickupTime: "12:00",
@@ -31,7 +31,8 @@ function RequestPickupModal({ handleClose }) {
   const collectionRef = collection(db, "pickups");
   const { user } = UserAuth();
   const [pickups, setPickups] = useState([]);
-
+  const [profie, setProfile] = useState([]);
+  
   useEffect(() => {
     const unsub = onSnapshot(collectionRef, (querySnapshot) => {
       const items = [];
@@ -165,4 +166,4 @@ function RequestPickupModal({ handleClose }) {
   );
 }
 
-export default RequestPickupModal;
+export default Pickup;

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
 import { GoogleButton } from "react-google-button";
+import { toast } from 'react-toastify';
 
 function SignInModal({ handleClose }) {
   const [email, setEmail] = useState("");
@@ -13,11 +14,13 @@ function SignInModal({ handleClose }) {
   const navigate = useNavigate();
   const handleGoogleSignIn = async () => {
     try {
-      navigate("/profile");
       await googleSignIn();
+      toast.success('Signed in successfully with Google!');
       handleClose();
+      navigate("/profile");
     } catch (error) {
       console.log(error);
+      toast.error('Error signing in with Google. Please try again.');
     }
   };
 
@@ -27,11 +30,23 @@ function SignInModal({ handleClose }) {
     try {
       await signIn(email, password);
       handleClose();
-    } catch (e) {
-      setError(e.message);
-      console.log(error);
+      toast.success('Signed in successfully!');
+      navigate('/profile')
+    } catch (error) {
+      if (error.code === 'auth/user-not-found') {
+        toast.error('User not found. Please check your email and try again.');
+      }
+      if (error.code === 'auth/email-already-in-use') {
+        toast.error('Email address is already in use.'); // Display error toast message
+      }
+       else {
+        setError(error.message);
+        // console.error(error);
+        toast.error('Error signing in. Please check your credentials and try again.');
+      }
     }
   };
+  
 
   useEffect((user, navigate) => {
     if (user != null) {
