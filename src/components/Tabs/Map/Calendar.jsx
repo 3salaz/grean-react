@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { usePickups } from "../../context/PickupsContext";
+import { usePickups } from "../../../context/PickupsContext";
 
 function Calendar({ handleClose }) {
   const { userPickups } = usePickups();
@@ -34,7 +34,7 @@ function Calendar({ handleClose }) {
   return (
     <div
       id="calendar"
-      className="w-full absolute top-0 h-full bg-black bg-opacity-90 bg-blur-10 px-2 z-20 flex justify-center items-center"
+      className="w-full absolute top-0 h-full bg-black bg-opacity-40 bg-blur-10 z-20 flex justify-center items-center"
     >
       <div className="max-w-[600px] h-[96%] container drop-shadow-2xl rounded-lg text-slate bg-white border-grean border-4">
         <motion.section className="h-full w-full flex flex-col items-center  justify-center z-[100] py-4">
@@ -43,8 +43,8 @@ function Calendar({ handleClose }) {
               {userPickups === null ? "Loading..." : userPickups.length}
             </section>
             <section className="h-full flex flex-col justify-end items-start pb-4">
-              <div className="text-2xl font-bold">Pickups</div>
-              <div>View Your Week Below ⬇️</div>
+              <div className="text-2xl font-bold">My Schedule</div>
+              <div className="text-md">Pickups Accepted</div>
             </section>
           </header>
           <main className="w-[90%] max-w-[90%] h-[48rem] flex gap-2 overflow-x-scroll snap-proximity snap-x no-scroll">

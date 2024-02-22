@@ -3,7 +3,7 @@ import { UserAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import AnimatedTextWord from "../components/AnimatedTextWord";
-import SignInModal from "../components/Modals/SignInModal";
+import SignInModal from "./SignIn";
 import Background from "../assets/pexels-melissa-sombrerero-12605435.jpg";
 
 function LandingPage() {
@@ -24,13 +24,13 @@ function LandingPage() {
           <AnimatedTextWord text="GREAN" />
         </div> 
         {user ? (
-          <Link to="/profile">
+          <Link to="/account">
             <motion.button
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.9 }}
               className="w-20 h-20 border-4 border-grean text-grean p-2 bg-white rounded-full flex items-center justify-center"
             >
-              Profile
+              Account
             </motion.button>
           </Link>
         ) : (

@@ -1,7 +1,8 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, doc, onSnapshot, serverTimestamp, setDoc } from "firebase/firestore";
 import { db } from "../firebase"; // Adjust this import path as necessary
 import { toast } from "react-toastify";
+import { v4 as uuidv4 } from "uuid";
 
 const PickupContext = createContext();
 
@@ -15,6 +16,7 @@ export const PickupsProvider = ({ children }) => {
     const localData = localStorage.getItem("visiblePickups");
     return localData ? JSON.parse(localData) : [];
   });
+
   useEffect(() => {
     const unsubscribe = onSnapshot(
       collection(db, "pickups"),
@@ -86,14 +88,36 @@ export const PickupsProvider = ({ children }) => {
     );
   };
 
+  const addPickup = async (pickupData) => {
+    const newPickupId = uuidv4();
+    const newPickupRef = doc(db, "pickups", newPickupId);
+    const newPickup = {
+      ...pickupData,
+      id: newPickupId,
+      createdAt: serverTimestamp(),
+      lastUpdate: serverTimestamp(),
+      isOpen: true,
+    };
+
+    try {
+      await setDoc(newPickupRef, newPickup);
+      toast.success("Pickup request submitted successfully!");
+      // Optionally, update local state here if needed
+    } catch (error) {
+      console.error("Error adding pickup:", error);
+      toast.error("Error submitting pickup request. Please try again.");
+    }
+  };
+
   return (
     <PickupContext.Provider
       value={{
         pickups,
         visiblePickups,
-        deletePickup,
         userPickups,
+        deletePickup,
         acceptPickup,
+        addPickup,
       }}
     >
       {children}

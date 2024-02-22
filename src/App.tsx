@@ -1,21 +1,25 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { AuthContextProvider } from "./context/AuthContext";
+import { PickupsProvider } from "./context/PickupsContext";
+
+// Toast Messages
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 // Routes
-import Profile from "./routes/Profile";
 import Home from "./routes/Home";
+import Account from "./routes/Account";
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 // Components
 import Navbar from "./components/Navbar";
-import ProtectedRoute from "./routes/ProtectedRoute";
+
 import Admin from "./components/Admin/Admin";
 import Contact from "./routes/Contact";
 import About from "./routes/About";
 import Services from "./routes/Services";
-import { PickupsProvider } from "./context/PickupsContext";
+
 
 function App() {
   return (
@@ -26,11 +30,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route
-            path="/profile"
+            path="/account"
             element={
               <ProtectedRoute>
                 <PickupsProvider>
-                  <Profile />
+                  <Account />
                 </PickupsProvider>
               </ProtectedRoute>
             }

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { usePickups } from "../../context/PickupsContext";
+import { usePickups } from "../../../context/PickupsContext";
 
 function Notifications({ handleClose }) {
   const { visiblePickups, deletePickup, acceptPickup } = usePickups();
@@ -18,7 +18,7 @@ function Notifications({ handleClose }) {
             Approve, Decline or Be Reminded Later
           </div>
         </header>
-        <main className="h-[90%]  flex flex-col basis-5/6 items-center justify-center">
+        <main className="h-[90%] flex flex-col basis-5/6 items-center justify-center">
           <ul className="n-list w-full basis-5/6 max-h-[100%] gap-3 flex flex-col overflow-scroll p-2">
             {visiblePickups.map((pickup) => (
               <li key={pickup.id} className="flex gap-4 flex-col bg-light py-2">

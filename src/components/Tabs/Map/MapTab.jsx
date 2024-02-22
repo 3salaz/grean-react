@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { motion} from "framer-motion";
-import { usePickups } from "../../context/PickupsContext";
-import Pickup from "../Modals/Pickup";
-import Calendar from "../Modals/Calendar";
-import Notifications from "../Modals/Notifications";
+import { usePickups } from "../../../context/PickupsContext";
+import Pickup from "./Pickup";
+import Calendar from "./Calendar";
+import Notifications from "./Notifications";
 
 function MapTab() {
   const { visiblePickups } = usePickups();
@@ -64,7 +64,6 @@ function MapTab() {
                   Request Pickup
                 </motion.button>
               </div>
-
               <div className="flex flex-col gap-2  basis-1/5 items-center justify-between">
                 {/* Notifications Modal */}
                 <motion.button

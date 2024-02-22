@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
-import Backdrop from "../Backdrop";
+import Backdrop from "./Backdrop";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { UserAuth } from "../../context/AuthContext";
+import { UserAuth } from "../context/AuthContext";
 import { GoogleButton } from "react-google-button";
 import { toast } from "react-hot-toast";
 
@@ -31,7 +31,7 @@ function SignUpModal({ handleClose }) {
     setError("");
     try {
         await createUser(email, password);
-        navigate('/profile');
+        navigate('/account');
         handleClose();
     } catch (e) {
       setError(e.message);

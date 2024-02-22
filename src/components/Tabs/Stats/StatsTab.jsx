@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { UserAuth } from "../../context/AuthContext";
+import { UserAuth } from "../../../context/AuthContext";
 import { motion } from "framer-motion";
 import { doc, getDoc } from "firebase/firestore";
-import { db } from "../../firebase";
+import { db } from "../../../firebase";
+import ProfileHeader from "../../UserHeader";
 
 function StatsTab() {
   const { user } = UserAuth();
@@ -49,31 +50,14 @@ function StatsTab() {
   return (
     <section
       id="statsTab"
-      className="w-full h-[82svh] bg-black bg-opacity-40 bg-blur-10 absolute top-0 flex items-center justify-center md:px-2"
+      className="w-full h-[82svh] z-10 bg-white absolute top-0 flex items-center justify-center"
     >
       {/* Card */}
-      <main className="w-full container mx-auto max-w-[650px] overflow-scroll flex items-center justify-center rounded-md md:rounded-lg">
-        <div className="w-full h-full z-20 items-center justify-center">
-          <header className="w-full flex items-center h-[15%] justify-center gap-2 py-4 bg-grean">
-            <img
-              className="rounded-full w-[4rem]"
-              alt="placeholder"
-              src={user.photoURL}
-            ></img>
-            <div>
-              <h2 className="text-xl font-bold text-grean">
-                {user.displayName}
-              </h2>
-              <p className="text-sm bg-grean text-white font-bold rounded-xl">
-                <span className="text-lg">User Email</span>
-                <br></br>
-                {user.email}
-              </p>
-            </div>
-          </header>
-          <div className="flex flex-col items-center h-[85%] justify-center bg-white text-white py-4">
+      <main className="container mx-auto max-w-[750px] md:pt-12 h-full flex items-center justify-center">
+        <div className="w-full h-full z-20 flex flex-col items-center relative">
+          <ProfileHeader/>
+          <div className="flex flex-col items-center justify-center bg-white text-white py-4">
             <section className="px-4 flex flex-col gap-3">
-              <div className="h-80 max-h-80 overflow-scroll">
                 <section className="px-4 flex flex-col gap-3">
                   <footer className="w-full flex justify-center items-center">
                     <p className="text-orange font-bold">
@@ -140,7 +124,6 @@ function StatsTab() {
                     </div>
                   </section>
                 </section>
-              </div>
               <div
                 id="tabButtons"
                 className="flex justify-center gap-4 text-center"

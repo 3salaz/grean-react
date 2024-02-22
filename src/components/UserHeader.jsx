@@ -1,16 +1,17 @@
 import { UserAuth } from "../context/AuthContext";
+import avatar from "../assets/avatar.svg";
 
-function HeaderUser() {
+function ProfileHeader() {
   const { user } = UserAuth();
   return (
-    <header className="w-full basis-1/6 flex items-center justify-center py-4 gap-3">
+    <header className="w-full flex items-center justify-start p-2 gap-3 bg-white">
       <img
         className="rounded-full w-20"
-        alt="placeholder"
-        src={user.photoURL}
+        alt="profilePic"
+        src={user.photoURL || avatar }
       ></img>
       <div>
-        <h2 className="text-lg font-bold text-grean">{user.displayName}</h2>
+        <h2 className="text-lg font-bold text-black">{user.displayName}</h2>
         <p className="text-xs bg-grean text-white font-bold px-2 py-2 rounded-xl flex flex-wrap">
           ID:{user.uid}
         </p>
@@ -19,4 +20,4 @@ function HeaderUser() {
   );
 }
 
-export default HeaderUser;
+export default ProfileHeader;

@@ -4,7 +4,7 @@ import { motion, useCycle } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 import { useState } from "react";
-import SignUpModal from "./Modals/SignUpModal";
+import SignUpModal from "./SignUp";
 
 function Navbar() {
   const { user, logOut } = UserAuth();
@@ -26,7 +26,7 @@ function Navbar() {
   };
 
   return (
-    <nav id="navbar" className="bg-grean sticky top-0 inset-x-0 h-[8svh] z-50">
+    <nav id="navbar" className="bg-grean top-0 inset-x-0 h-[8svh] z-50 relative">
       {/* signUp modal */}
       {signUpOpen && (
         <SignUpModal
@@ -262,9 +262,10 @@ function Navbar() {
           }}
           initial="closed"
           animate="open"
+          className="relative"
         >
           <div
-            className="absolute top-14 right-2 z-30 mt-5 w-36 origin-top-right rounded-md bg-white py-1 px-2 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+            className="absolute top-0 right-32 z-30 w-36 rounded-md bg-white py-1 px-2 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
             role="menu"
           >
             {/* <!-- Active: "bg-gray-100", Not Active: "" --> */}

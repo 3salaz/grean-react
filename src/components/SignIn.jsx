@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
-import Backdrop from "../Backdrop";
+import Backdrop from "./Backdrop";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { UserAuth } from "../../context/AuthContext";
+import { UserAuth } from "../context/AuthContext";
 import { GoogleButton } from "react-google-button";
 import { toast } from 'react-toastify';
 
