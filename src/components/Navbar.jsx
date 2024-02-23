@@ -265,7 +265,7 @@ function Navbar() {
           className="relative"
         >
           <div
-            className="absolute top-0 right-32 z-30 w-36 rounded-md bg-white py-1 px-2 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+            className="absolute top-2 right-2 drop-shadow-lg z-30 w-36 rounded-md bg-white py-1 px-2 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
             role="menu"
           >
             {/* <!-- Active: "bg-gray-100", Not Active: "" --> */}

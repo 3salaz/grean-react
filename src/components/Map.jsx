@@ -88,7 +88,7 @@ function Map() {
   );
   // initialize map when component mounts
   return (
-    <div id="map" className="h-[82svh] w-full">
+    <div id="map" className="h-[83svh] w-full">
       <ReactMapGl
         {...viewPort}
         onMove={(evt) => setViewPort(evt.viewState)}

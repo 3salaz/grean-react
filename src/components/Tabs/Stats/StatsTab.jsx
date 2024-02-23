@@ -50,7 +50,7 @@ function StatsTab() {
   return (
     <section
       id="statsTab"
-      className="w-full h-[82svh] z-10 bg-white absolute top-0 flex items-center justify-center"
+      className="w-full h-[83svh] z-10 bg-white absolute top-0 flex items-center justify-center"
     >
       {/* Card */}
       <main className="container mx-auto max-w-[750px] md:pt-12 h-full flex items-center justify-center">

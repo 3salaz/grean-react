@@ -4,7 +4,7 @@ import avatar from "../assets/avatar.svg";
 function ProfileHeader() {
   const { user } = UserAuth();
   return (
-    <header className="w-full flex items-center justify-start p-2 gap-3 bg-white">
+    <header className="w-full h-[20%] flex items-center justify-start gap-3 bg-white">
       <img
         className="rounded-full w-20"
         alt="profilePic"

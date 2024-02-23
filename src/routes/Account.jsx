@@ -34,26 +34,6 @@ function Account() {
     return Object.keys(obj).length === 0;
   };
 
-  // Fetch pickups data from Firebase on component mount
-  useEffect(() => {
-    const fetchPickups = async () => {
-      try {
-        const querySnapshot = await getDocs(collection(db, "pickups"));
-        const pickupsData = [];
-        querySnapshot.forEach((doc) => {
-          pickupsData.push({ id: doc.id, ...doc.data() });
-        });
-        setPickups(pickupsData);
-        console.log(pickups)
-      } catch (error) {
-        console.error("Error fetching pickups:", error);
-        toast.error("Error fetching pickups. Please try again later.");
-      }
-    };
-
-    fetchPickups();
-  }, []);
-
   return (
     <section className="w-full">
       <Map />

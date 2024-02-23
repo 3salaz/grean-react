@@ -19,12 +19,13 @@ import Admin from "./components/Admin/Admin";
 import Contact from "./routes/Contact";
 import About from "./routes/About";
 import Services from "./routes/Services";
-
+import { ProfileProvider } from "./context/ProfileContext";
+import { LocationsProvider } from "./context/LocationContext";
 
 function App() {
   return (
     <AuthContextProvider>
-      <ToastContainer/>
+      <ToastContainer />
       <Navbar />
       <main className="absolute top-[8svh] w-full bg-grean">
         <Routes>
@@ -33,9 +34,13 @@ function App() {
             path="/account"
             element={
               <ProtectedRoute>
-                <PickupsProvider>
-                  <Account />
-                </PickupsProvider>
+                <ProfileProvider>
+                  <LocationsProvider>
+                    <PickupsProvider>
+                      <Account />
+                    </PickupsProvider>
+                  </LocationsProvider>
+                </ProfileProvider>
               </ProtectedRoute>
             }
           ></Route>
